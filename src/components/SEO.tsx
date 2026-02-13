@@ -1,35 +1,43 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 type SEOProps = {
   title?: string;
   description?: string;
-  canonicalUrl?: string;
+  ogImage?: string;
+  url?: string;
 };
 
 export default function SEO({
   title = "Apex Fusion Studios - Premium Software & Automation",
   description = "We build custom software products, automation systems, and digital infrastructure for businesses that refuse to settle.",
-  canonicalUrl = "https://apexfusion.com",
+  ogImage = "/og-image.png",
+  url = "https://apexfusionstudios.com",
 }: SEOProps) {
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+  useEffect(() => {
+    document.title = title;
 
-      <link rel="canonical" href={canonicalUrl} />
+    const upsert = (selector: string, attr: "name" | "property", key: string, content: string) => {
+      let el = document.head.querySelector(selector) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
 
-      {/* Open Graph */}
-      <meta property="og:title" content="Apex Fusion Studios" />
-      <meta property="og:description" content="Premium software and automation company" />
-      <meta property="og:image" content="/og-image.png" />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:type" content="website" />
+    upsert('meta[name="description"]', "name", "description", description);
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Apex Fusion Studios" />
-      <meta name="twitter:description" content="Premium software and automation" />
-      <meta name="twitter:image" content="/og-image.png" />
-    </Helmet>
-  );
+    upsert('meta[property="og:title"]', "property", "og:title", title);
+    upsert('meta[property="og:description"]', "property", "og:description", description);
+    upsert('meta[property="og:image"]', "property", "og:image", ogImage);
+    upsert('meta[property="og:url"]', "property", "og:url", url);
+
+    upsert('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
+    upsert('meta[name="twitter:title"]', "name", "twitter:title", title);
+    upsert('meta[name="twitter:description"]', "name", "twitter:description", description);
+    upsert('meta[name="twitter:image"]', "name", "twitter:image", ogImage);
+  }, [title, description, ogImage, url]);
+
+  return null;
 }
