@@ -1,43 +1,69 @@
 import { useEffect } from "react";
 
-type SEOProps = {
+export type SEOProps = {
   title?: string;
   description?: string;
-  ogImage?: string;
-  url?: string;
+  /** Route path like "/services" to build canonical URL */
+  path?: string;
 };
 
-export default function SEO({
-  title = "Apex Fusion Studios - Premium Software & Automation",
-  description = "We build custom software products, automation systems, and digital infrastructure for businesses that refuse to settle.",
-  ogImage = "/og-image.png",
-  url = "https://apexfusionstudios.com",
-}: SEOProps) {
+const SITE_NAME = "Apex Fusion Studios";
+const SITE_URL = "https://apex-fusion-platform.vercel.app";
+
+function upsertMeta(nameOrProp: { name?: string; property?: string }, content: string) {
+  const selector = nameOrProp.name
+    ? `meta[name="${nameOrProp.name}"]`
+    : `meta[property="${nameOrProp.property}"]`;
+
+  let el = document.head.querySelector<HTMLMetaElement>(selector);
+  if (!el) {
+    el = document.createElement("meta");
+    if (nameOrProp.name) el.setAttribute("name", nameOrProp.name);
+    if (nameOrProp.property) el.setAttribute("property", nameOrProp.property);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+function upsertLink(rel: string, href: string) {
+  let el = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute("rel", rel);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("href", href);
+}
+
+export default function SEO({ title, description, path }: SEOProps) {
   useEffect(() => {
-    document.title = title;
+    const fullTitle = title ? title : SITE_NAME;
+    const canonical = path ? `${SITE_URL}${path}` : SITE_URL;
 
-    const upsert = (selector: string, attr: "name" | "property", key: string, content: string) => {
-      let el = document.head.querySelector(selector) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
+    document.title = fullTitle;
 
-    upsert('meta[name="description"]', "name", "description", description);
+    if (description) {
+      upsertMeta({ name: "description" }, description);
+    }
 
-    upsert('meta[property="og:title"]', "property", "og:title", title);
-    upsert('meta[property="og:description"]', "property", "og:description", description);
-    upsert('meta[property="og:image"]', "property", "og:image", ogImage);
-    upsert('meta[property="og:url"]', "property", "og:url", url);
+    upsertLink("canonical", canonical);
 
-    upsert('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
-    upsert('meta[name="twitter:title"]', "name", "twitter:title", title);
-    upsert('meta[name="twitter:description"]', "name", "twitter:description", description);
-    upsert('meta[name="twitter:image"]', "name", "twitter:image", ogImage);
-  }, [title, description, ogImage, url]);
+    // Open Graph
+    upsertMeta({ property: "og:site_name" }, SITE_NAME);
+    upsertMeta({ property: "og:title" }, fullTitle);
+    upsertMeta({ property: "og:url" }, canonical);
+    upsertMeta({ property: "og:type" }, "website");
+    if (description) {
+      upsertMeta({ property: "og:description" }, description);
+    }
+
+    // Twitter
+    upsertMeta({ name: "twitter:card" }, "summary_large_image");
+    upsertMeta({ name: "twitter:title" }, fullTitle);
+    if (description) {
+      upsertMeta({ name: "twitter:description" }, description);
+    }
+  }, [title, description, path]);
 
   return null;
 }

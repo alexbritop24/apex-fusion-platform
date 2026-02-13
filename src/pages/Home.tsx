@@ -15,6 +15,7 @@ import FounderBlock from "../components/FounderBlock";
 
 
 
+
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
 
@@ -34,6 +35,8 @@ export default function Home() {
           onPrimaryCTA={() => setBookingOpen(true)}
           onSecondaryCTA={() => setBookingOpen(true)}
         />
+
+        
         <FounderBlock />
         <WhoWeWorkWith />
         <ProcessSection onOpenBooking={() => setBookingOpen(true)} />

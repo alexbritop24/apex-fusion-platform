@@ -36,10 +36,20 @@ export default function FounderBlock() {
             </h2>
 
             <p className="mt-6 text-lg font-light text-neutral-400 leading-relaxed">
-              Apex Fusion Studios is a software and automation company built to
-              remove operational friction from real businesses. We don’t chase
-              surface-level “digital.” We engineer infrastructure that makes
-              execution faster, cleaner, and more reliable.
+              Apex Fusion Studios builds software and automation for established
+              service businesses that are outgrowing duct-taped tools. We engineer
+              operational backends — booking, workflows, integrations, and internal
+              dashboards — so you can scale without multiplying headcount.
+            </p>
+
+            <p className="mt-6 text-sm font-light text-neutral-500 leading-relaxed">
+              We ship with a product mindset across React + TypeScript, Swift, and
+              Python — building durable systems with clear ownership, clean
+              interfaces, and long-term maintainability.
+            </p>
+
+            <p className="mt-4 text-xs uppercase tracking-[0.22em] text-neutral-500">
+              Stack: React / TypeScript · Swift · Python
             </p>
 
             <p className="mt-6 text-sm font-light text-neutral-500 leading-relaxed">
@@ -61,7 +71,10 @@ export default function FounderBlock() {
                 return (
                   <div key={p.title} className="flex gap-4">
                     <div className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-950">
-                      <Icon className="h-5 w-5 text-[#3F6E8F]" aria-hidden="true" />
+                      <Icon
+                        className="h-5 w-5 text-[#3F6E8F]"
+                        aria-hidden="true"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-light text-neutral-100">

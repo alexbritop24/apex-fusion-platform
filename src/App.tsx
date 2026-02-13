@@ -7,6 +7,9 @@ const Services = lazy(() => import("./pages/Services"));
 const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
+const SystemsForServiceBusinesses = lazy(
+  () => import("./pages/SystemsForServiceBusinesses")
+);
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
@@ -20,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/systems-for-service-businesses" element={<SystemsForServiceBusinesses />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
