@@ -5,7 +5,7 @@ type HeroProps = {
   onSecondaryCTA: () => void;
 };
 
-export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
+export default function Hero({ onPrimaryCTA }: HeroProps) {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -17,17 +17,13 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
 
   const heroOpacity = useMemo(() => Math.max(0, 1 - scrollY / 700), [scrollY]);
   const heroTranslate = useMemo(() => scrollY * 0.15, [scrollY]);
-  const indicatorOpacity = useMemo(
-    () => Math.max(0, 1 - scrollY / 250),
-    [scrollY]
-  );
 
   return (
-    <section className="relative min-h-screen overflow-hidden px-8 py-32 lg:px-16">
-      {/* subtle background orbs */}
+    <section className="relative min-h-screen px-8 lg:px-16 py-32 overflow-hidden">
+      {/* subtle background glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full blur-3xl"
+        className="pointer-events-none absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full blur-3xl"
         style={{ background: "#3F6E8F", opacity: 0.03 }}
       />
       <div
@@ -43,17 +39,29 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
           transform: `translateY(${heroTranslate}px)`,
         }}
       >
-        <h1 className="mb-10 text-6xl font-extralight leading-none tracking-[-0.04em] md:text-7xl lg:text-8xl">
-          Digital Systems at the
-          <br />
-          Peak of Perfection
-        </h1>
-
-        <p className="mx-auto mb-14 max-w-3xl text-xl font-light text-neutral-400 lg:text-2xl">
-          Software, automation & platforms that propel your business forward.
+        <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
+          For serious operators
         </p>
 
-        <div className="flex items-center justify-center gap-8">
+        <h1 className="mt-6 text-6xl md:text-7xl lg:text-8xl font-extralight tracking-[-0.04em] leading-none">
+          Replace manual chaos
+          <br />
+          with engineered systems.
+        </h1>
+
+        <p className="mx-auto mt-10 max-w-3xl text-xl lg:text-2xl text-neutral-400 font-light">
+          We design custom software, automation workflows, and booking systems
+          that eliminate operational friction and give service businesses
+          durable infrastructure to scale.
+        </p>
+
+        {/* Qualification layer */}
+        <p className="mx-auto mt-6 max-w-2xl text-sm text-neutral-500">
+          Built for teams ready to invest in systems that compound — not
+          templates or one-off fixes.
+        </p>
+
+        <div className="mt-14 flex items-center justify-center gap-8">
           <button
             type="button"
             onClick={onPrimaryCTA}
@@ -62,32 +70,19 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
               "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
               "shadow-xl shadow-[#3F6E8F]/25",
               "transition-all duration-500",
-              "hover:from-[#5B8FB0] hover:to-[#3F6E8F] hover:shadow-[#5B8FB0]/30 hover:-translate-y-1",
+              "hover:from-[#5B8FB0] hover:to-[#3F6E8F]",
+              "hover:shadow-[#5B8FB0]/30 hover:-translate-y-1",
               "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
             ].join(" ")}
           >
-            Transform My Systems
-          </button>
-
-          <button
-            type="button"
-            onClick={onSecondaryCTA}
-            className="text-sm text-neutral-400 transition-colors duration-500 hover:text-[#3F6E8F] focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
-          >
-            Try Live Demo →
+            Request a Systems Assessment
           </button>
         </div>
 
-        {/* scroll indicator */}
-        <div className="mt-20 flex justify-center" style={{ opacity: indicatorOpacity }}>
-          <div
-            className="h-16 w-px animate-pulse"
-            style={{
-              background:
-                "linear-gradient(to bottom, transparent, #3F6E8F, transparent)",
-            }}
-          />
-        </div>
+        {/* Micro trust line */}
+        <p className="mt-10 text-xs text-neutral-600 tracking-wide">
+          Custom infrastructure • Automation engineering • Apex Booking System
+        </p>
       </div>
     </section>
   );

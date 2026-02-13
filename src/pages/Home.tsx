@@ -8,6 +8,12 @@ import CapabilitiesGrid from "../components/CapabilitiesGrid";
 import ProofSection from "../components/ProofSection";
 import FinalCTA from "../components/FinalCTA";
 import Footer from "../components/Footer";
+import WhoWeWorkWith from "../components/WhoWeWorkWith";
+import ProcessSection from "../components/ProcessSection";
+import AuthorityBlock from "../components/AuthorityBlock";
+import FounderBlock from "../components/FounderBlock";
+
+
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -28,7 +34,10 @@ export default function Home() {
           onPrimaryCTA={() => setBookingOpen(true)}
           onSecondaryCTA={() => setBookingOpen(true)}
         />
-
+        <FounderBlock />
+        <WhoWeWorkWith />
+        <ProcessSection onOpenBooking={() => setBookingOpen(true)} />
+        <AuthorityBlock />
         <PlatformHighlight onOpenBooking={() => setBookingOpen(true)} />
         <CapabilitiesGrid />
         <ProofSection />

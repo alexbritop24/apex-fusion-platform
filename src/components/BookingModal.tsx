@@ -78,7 +78,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl"
       role="dialog"
       aria-modal="true"
-      aria-label="Schedule a consultation"
+      aria-label="Request a Systems Assessment"
       onMouseDown={(e) => {
         // click outside to close
         if (e.target === e.currentTarget) onClose();
@@ -93,7 +93,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           <div className="flex items-start justify-between gap-6">
             <div>
               <h2 className="text-2xl font-extralight tracking-tight">
-                Schedule a consultation
+                Request a Systems Assessment
               </h2>
               <p className="mt-2 text-sm text-neutral-400">
                 Tell us what you’re building. We’ll respond with next steps.
@@ -114,7 +114,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             {submitted ? (
               <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6">
                 <p className="text-lg font-extralight">
-                  Thank you. Your message goes straight to our founders’ inbox.
+                  Thank you. Your request goes straight to our founders’ inbox.
                 </p>
               </div>
             ) : (
@@ -179,7 +179,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
                   ].join(" ")}
                 >
-                  Submit Request
+                  Submit Assessment Request
                 </button>
               </form>
             )}

@@ -39,7 +39,7 @@ export default function FinalCTA({ onOpenBooking }: FinalCTAProps) {
               "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
             ].join(" ")}
           >
-            Schedule a Consultation
+            Request a Systems Assessment
           </button>
         </div>
       </div>
