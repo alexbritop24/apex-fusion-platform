@@ -70,8 +70,6 @@ const initialState: FormState = {
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
-
-  // NEW
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -125,7 +123,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     });
   };
 
-  // UPDATED: send to /api/intake
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
@@ -170,7 +167,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
       setSubmitted(true);
       setSubmitting(false);
-      setTimeout(() => onClose(), 2000);
+      setTimeout(() => onClose(), 1500);
     } catch {
       setErrorMsg("Network error. Please try again.");
       setSubmitting(false);
@@ -191,11 +188,16 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         <div
           ref={panelRef}
           tabIndex={-1}
-          className="w-full max-w-2xl rounded-2xl border border-neutral-800/50 bg-neutral-900 p-8 shadow-2xl shadow-black/60 outline-none"
+          className={[
+            "w-full max-w-2xl overflow-hidden rounded-2xl",
+            "border border-neutral-800/50 bg-neutral-900",
+            "shadow-2xl shadow-black/60 outline-none",
+          ].join(" ")}
         >
-          <div className="flex items-start justify-between gap-6">
+          {/* Header */}
+          <div className="flex items-start justify-between gap-6 border-b border-neutral-800/60 px-8 py-6">
             <div>
-              <h2 className="text-2xl font-extralight tracking-tight">
+              <h2 className="text-2xl font-extralight tracking-tight text-neutral-100">
                 Request a Systems Assessment
               </h2>
               <p className="mt-2 text-sm text-neutral-400">
@@ -213,11 +215,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             </button>
           </div>
 
-          <div className="mt-8">
+          {/* Body (scrollable) */}
+          <div className="max-h-[70vh] overflow-y-auto px-8 py-6">
             {submitted ? (
               <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6">
-                <p className="text-lg font-extralight">
-                  Thank you. Your request goes straight to our founders’ inbox.
+                <p className="text-lg font-extralight text-neutral-100">
+                  Sent. Check your inbox — you should receive it immediately.
                 </p>
               </div>
             ) : (
@@ -287,7 +290,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       <option value="Home Services">Home Services</option>
                       <option value="Agency">Agency</option>
                       <option value="Local Retail">Local Retail</option>
-                      <option value="Professional Services">Professional Services</option>
+                      <option value="Professional Services">
+                        Professional Services
+                      </option>
                       <option value="Other">Other</option>
                     </select>
                   </label>
@@ -360,28 +365,41 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   />
                 </label>
 
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className={[
-                    "w-full rounded-lg py-4 font-semibold text-white",
-                    "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
-                    "shadow-xl shadow-[#3F6E8F]/20",
-                    "transition-all duration-500",
-                    "hover:from-[#5B8FB0] hover:to-[#3F6E8F] hover:shadow-[#5B8FB0]/25 hover:-translate-y-0.5",
-                    "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
-                    submitting ? "opacity-70 cursor-not-allowed" : "",
-                  ].join(" ")}
-                >
-                  {submitting ? "Sending..." : "Submit Assessment Request"}
-                </button>
-
-                <p className="text-center text-xs text-neutral-500">
-                  15-minute fit call. No obligation.
-                </p>
+                {/* Spacer so the last field isn't hidden behind sticky footer */}
+                <div className="h-24" />
               </form>
             )}
           </div>
+
+          {/* Sticky Footer (always visible submit) */}
+          {!submitted ? (
+            <div className="sticky bottom-0 border-t border-neutral-800/60 bg-neutral-900/95 px-8 py-5 backdrop-blur-xl">
+              <button
+                type="button"
+                onClick={() => {
+                  // trigger native form submit from sticky footer
+                  const formEl = panelRef.current?.querySelector("form");
+                  formEl?.requestSubmit?.();
+                }}
+                disabled={submitting}
+                className={[
+                  "w-full rounded-lg py-4 font-semibold text-white",
+                  "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
+                  "shadow-xl shadow-[#3F6E8F]/20",
+                  "transition-all duration-500",
+                  "hover:from-[#5B8FB0] hover:to-[#3F6E8F] hover:shadow-[#5B8FB0]/25 hover:-translate-y-0.5",
+                  "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
+                  submitting ? "opacity-70 cursor-not-allowed" : "",
+                ].join(" ")}
+              >
+                {submitting ? "Sending..." : "Submit Assessment Request"}
+              </button>
+
+              <p className="mt-3 text-center text-xs text-neutral-500">
+                15-minute fit call. No obligation.
+              </p>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>,
