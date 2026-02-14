@@ -1,10 +1,16 @@
+// src/components/ProofSection.tsx
+
 const engagements = [
   {
-    category: "Automation Architecture",
-    title: "Operational Workflow Consolidation",
+    category: "Case Study",
+    title: "Service Business Ops Rebuild",
     description:
-      "Replaced fragmented manual processes with unified automation flows, reducing handoffs and eliminating duplicate data entry across departments.",
-    context: "Service-based operator",
+      "Rebuilt intake, scheduling, reminders, and reporting into a unified operational backend.",
+    before: "Manual scheduling, missed follow-ups, duplicate admin entry.",
+    after: "Automated intake forms, calendar logic, reminders, and internal dashboard.",
+    result:
+      "Reduced admin load, improved response speed, and stabilized weekly throughput.",
+    context: "Multi-location service operator",
   },
   {
     category: "Platform Engineering",
@@ -21,6 +27,33 @@ const engagements = [
     context: "Digital operations team",
   },
 ];
+
+type CaseStudyEngagement = {
+  category: string;
+  title: string;
+  description: string;
+  before: string;
+  after: string;
+  result: string;
+  context: string;
+};
+
+type StandardEngagement = {
+  category: string;
+  title: string;
+  description: string;
+  context: string;
+};
+
+type Engagement = CaseStudyEngagement | StandardEngagement;
+
+function isCaseStudy(e: Engagement): e is CaseStudyEngagement {
+  return (
+    typeof (e as CaseStudyEngagement).before === "string" &&
+    typeof (e as CaseStudyEngagement).after === "string" &&
+    typeof (e as CaseStudyEngagement).result === "string"
+  );
+}
 
 export default function ProofSection() {
   return (
@@ -42,7 +75,7 @@ export default function ProofSection() {
         </div>
 
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {engagements.map((e) => (
+          {(engagements as Engagement[]).map((e) => (
             <article
               key={e.title}
               className="group rounded-2xl border border-neutral-800 bg-black/40 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-[#3F6E8F]/40"
@@ -59,9 +92,21 @@ export default function ProofSection() {
                 {e.description}
               </p>
 
-              <p className="mt-8 text-xs text-neutral-500">
-                Context: {e.context}
-              </p>
+              {isCaseStudy(e) ? (
+                <div className="mt-6 space-y-3 text-sm font-light text-neutral-400">
+                  <p>
+                    <span className="text-neutral-200">Before:</span> {e.before}
+                  </p>
+                  <p>
+                    <span className="text-neutral-200">After:</span> {e.after}
+                  </p>
+                  <p>
+                    <span className="text-neutral-200">Result:</span> {e.result}
+                  </p>
+                </div>
+              ) : null}
+
+              <p className="mt-8 text-xs text-neutral-500">Context: {e.context}</p>
             </article>
           ))}
         </div>

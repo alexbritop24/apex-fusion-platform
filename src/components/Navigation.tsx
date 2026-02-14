@@ -21,7 +21,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
     () => [
       { to: "/", label: "Home" },
       { to: "/services", label: "Services" },
-      { to: "/systems-audit", label: "Free Systems Audit" }, // ← ADDED
+      { to: "/systems-audit", label: "Free Systems Audit" },
       { to: "/about", label: "About" },
     ],
     []
@@ -96,10 +96,9 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
             })}
           </div>
 
-          {/* CTA */}
-          <button
-            type="button"
-            onClick={onOpenBooking}
+          {/* ✅ CTA now routes to /book */}
+          <Link
+            to="/book"
             className={[
               "rounded-lg px-6 py-2.5 text-sm font-semibold text-white",
               "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
@@ -111,7 +110,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
             ].join(" ")}
           >
             Request a Systems Assessment
-          </button>
+          </Link>
         </div>
       </nav>
     </header>
