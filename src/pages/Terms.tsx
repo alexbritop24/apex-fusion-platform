@@ -171,7 +171,7 @@ export default function Terms() {
         description="Terms of Service for Apex Fusion Studios."
       />
 
-      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <Navigation/>
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-24">

@@ -29,7 +29,7 @@ export default function Book() {
       />
 
       {/* Nav CTA will be updated to point here; keep prop for now */}
-      <Navigation onOpenBooking={() => {}} />
+      <Navigation />
 
       <main id="main" className="pt-28 px-8 lg:px-16">
         <div className="mx-auto max-w-6xl">

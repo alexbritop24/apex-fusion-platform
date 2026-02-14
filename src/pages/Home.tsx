@@ -23,7 +23,7 @@ export default function Home() {
     <div className="min-h-screen bg-black text-[#f5f5f5]">
       <SEO />
 
-      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <Navigation />
       <BookingModal
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}

@@ -50,7 +50,7 @@ export default function About() {
         description="Apex Fusion Studios is a premium software and automation company building digital systems and infrastructure for serious operators."
       />
 
-      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <Navigation />
       <BookingModal
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}

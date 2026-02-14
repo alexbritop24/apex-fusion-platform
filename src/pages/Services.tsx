@@ -120,7 +120,7 @@ export default function Services() {
         path="/services"
       />
 
-      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <Navigation />
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-24">

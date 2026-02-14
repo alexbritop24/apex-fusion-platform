@@ -15,7 +15,7 @@ export default function CustomSoftwareDevelopment() {
         path="/custom-software-development"
       />
 
-      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <Navigation />
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-28 px-8 lg:px-16">

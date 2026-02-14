@@ -15,7 +15,7 @@ export default function SystemsForServiceBusinesses() {
         path="/systems-for-service-businesses"
       />
 
-      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <Navigation />
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-28">

@@ -177,7 +177,7 @@ export default function Privacy() {
         description="Privacy Policy for Apex Fusion Studios."
       />
 
-      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <Navigation />
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-24">

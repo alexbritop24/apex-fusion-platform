@@ -15,7 +15,7 @@ export default function AutomationForLocalBusiness() {
         path="/automation-for-local-business"
       />
 
-      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <Navigation />
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-28 px-8 lg:px-16">
