@@ -1,4 +1,3 @@
-// src/components/BookingModal.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
@@ -40,7 +39,6 @@ type FormState = {
   email: string;
   company: string;
 
-  // Qualification gate
   businessType: BusinessType;
   timeline: Timeline;
   bottlenecks: Bottleneck[];
@@ -72,6 +70,11 @@ const initialState: FormState = {
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
+
+  // NEW
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
   const panelRef = useRef<HTMLDivElement | null>(null);
 
   const portalRoot = useMemo(() => {
@@ -88,8 +91,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
     document.addEventListener("keydown", onKeyDown);
     document.body.style.overflow = "hidden";
-
-    // focus the panel for accessibility
     setTimeout(() => panelRef.current?.focus(), 0);
 
     return () => {
@@ -101,6 +102,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   useEffect(() => {
     if (!isOpen) {
       setSubmitted(false);
+      setSubmitting(false);
+      setErrorMsg(null);
       setForm(initialState);
     }
   }, [isOpen]);
@@ -122,15 +125,56 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     });
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  // UPDATED: send to /api/intake
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg(null);
+    setSubmitting(true);
 
-    // Later: integrate with email service (Resend / Postmark / etc.)
-    // For now: log safely (no secrets).
-    console.log("Systems assessment request:", form);
+    try {
+      const res = await fetch("/api/intake", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          kind: "assessment",
+          fullName: form.fullName,
+          email: form.email,
+          company: form.company,
+          message: [
+            `Business type: ${form.businessType || "—"}`,
+            `Timeline: ${form.timeline || "—"}`,
+            `Bottlenecks: ${
+              form.bottlenecks.length ? form.bottlenecks.join(", ") : "—"
+            }`,
+            "",
+            form.message,
+          ].join("\n"),
+          website: "",
+        }),
+      });
 
-    setSubmitted(true);
-    setTimeout(() => onClose(), 2000);
+      const data = (await res.json().catch(() => null)) as
+        | { ok: true }
+        | { ok: false; error?: string; detail?: string }
+        | null;
+
+      if (!res.ok || !data || (data as any).ok !== true) {
+        const msg =
+          (data as any)?.error ||
+          (data as any)?.detail ||
+          "Something failed while sending. Try again.";
+        setErrorMsg(msg);
+        setSubmitting(false);
+        return;
+      }
+
+      setSubmitted(true);
+      setSubmitting(false);
+      setTimeout(() => onClose(), 2000);
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setSubmitting(false);
+    }
   };
 
   return createPortal(
@@ -140,7 +184,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       aria-modal="true"
       aria-label="Request a Systems Assessment"
       onMouseDown={(e) => {
-        // click outside to close
         if (e.target === e.currentTarget) onClose();
       }}
     >
@@ -179,7 +222,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-4">
-                {/* Identity */}
+                {errorMsg ? (
+                  <div className="rounded-xl border border-red-900/40 bg-red-950/30 px-4 py-3 text-sm text-red-200">
+                    {errorMsg}
+                  </div>
+                ) : null}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label className="space-y-2">
                     <span className="text-sm text-neutral-300">Full Name</span>
@@ -190,6 +238,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       placeholder="Your name"
                       autoComplete="name"
                       required
+                      disabled={submitting}
                     />
                   </label>
 
@@ -203,6 +252,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       autoComplete="email"
                       type="email"
                       required
+                      disabled={submitting}
                     />
                   </label>
                 </div>
@@ -215,20 +265,19 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     className="w-full rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white placeholder:text-neutral-600 focus:border-[#3F6E8F] focus:outline-none"
                     placeholder="Company name"
                     autoComplete="organization"
+                    disabled={submitting}
                   />
                 </label>
 
-                {/* Qualification gate */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label className="space-y-2">
-                    <span className="text-sm text-neutral-300">
-                      Business type
-                    </span>
+                    <span className="text-sm text-neutral-300">Business type</span>
                     <select
                       value={form.businessType}
                       onChange={(e) => set("businessType")(e.target.value)}
                       className="w-full rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white focus:border-[#3F6E8F] focus:outline-none"
                       required
+                      disabled={submitting}
                     >
                       <option value="" className="text-neutral-600">
                         Select one…
@@ -238,9 +287,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       <option value="Home Services">Home Services</option>
                       <option value="Agency">Agency</option>
                       <option value="Local Retail">Local Retail</option>
-                      <option value="Professional Services">
-                        Professional Services
-                      </option>
+                      <option value="Professional Services">Professional Services</option>
                       <option value="Other">Other</option>
                     </select>
                   </label>
@@ -252,6 +299,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       onChange={(e) => set("timeline")(e.target.value)}
                       className="w-full rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white focus:border-[#3F6E8F] focus:outline-none"
                       required
+                      disabled={submitting}
                     >
                       <option value="" className="text-neutral-600">
                         Select one…
@@ -285,6 +333,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                             checked={checked}
                             onChange={() => toggleBottleneck(b)}
                             className="mt-1 h-4 w-4 accent-[#3F6E8F]"
+                            disabled={submitting}
                           />
                           <span className="text-sm font-light text-neutral-200">
                             {b}
@@ -295,8 +344,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </div>
 
                   <p className="mt-4 text-xs text-neutral-500">
-                    Tip: pick the bottlenecks that block speed, revenue, or
-                    visibility.
+                    Tip: pick the bottlenecks that block speed, revenue, or visibility.
                   </p>
                 </fieldset>
 
@@ -308,11 +356,13 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     className="min-h-[120px] w-full resize-none rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white placeholder:text-neutral-600 focus:border-[#3F6E8F] focus:outline-none"
                     placeholder="Briefly describe your current workflow and what you want the system to do."
                     required
+                    disabled={submitting}
                   />
                 </label>
 
                 <button
                   type="submit"
+                  disabled={submitting}
                   className={[
                     "w-full rounded-lg py-4 font-semibold text-white",
                     "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
@@ -320,9 +370,10 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     "transition-all duration-500",
                     "hover:from-[#5B8FB0] hover:to-[#3F6E8F] hover:shadow-[#5B8FB0]/25 hover:-translate-y-0.5",
                     "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
+                    submitting ? "opacity-70 cursor-not-allowed" : "",
                   ].join(" ")}
                 >
-                  Submit Assessment Request
+                  {submitting ? "Sending..." : "Submit Assessment Request"}
                 </button>
 
                 <p className="text-center text-xs text-neutral-500">
