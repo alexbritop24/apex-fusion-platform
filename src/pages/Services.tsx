@@ -1,3 +1,4 @@
+// src/pages/Services.tsx
 import { useState } from "react";
 import SEO from "../components/SEO";
 import Navigation from "../components/Navigation";
@@ -116,6 +117,7 @@ export default function Services() {
       <SEO
         title="Services — Apex Fusion Studios"
         description="Premium custom software systems, automation workflows, digital infrastructure, and web experiences built for serious operators."
+        path="/services"
       />
 
       <Navigation onOpenBooking={() => setBookingOpen(true)} />
@@ -170,7 +172,7 @@ export default function Services() {
                   "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
                 ].join(" ")}
               >
-                Schedule a Consultation
+                Request a Systems Assessment
               </button>
 
               <a
@@ -196,6 +198,30 @@ export default function Services() {
                 leverage.
               </p>
             </div>
+
+            {/* NEW: Discoverable landing page link */}
+            <a
+              href="/systems-for-service-businesses"
+              className="group mt-12 block rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-[#3F6E8F]/60 hover:bg-neutral-900/40 focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
+            >
+              <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
+                For service businesses
+              </p>
+
+              <h3 className="mt-5 text-2xl font-extralight tracking-[-0.03em] text-neutral-100 md:text-3xl">
+                Systems for Service Businesses
+              </h3>
+
+              <p className="mt-4 max-w-3xl text-sm font-light leading-relaxed text-neutral-400 md:text-base">
+                We rebuild operational backends so your business scales without
+                more headcount — intake, scheduling, follow-ups, fulfillment,
+                reporting, and automation.
+              </p>
+
+              <p className="mt-6 text-sm font-semibold text-neutral-200 transition-colors duration-500 group-hover:text-[#5B8FB0]">
+                View the page →
+              </p>
+            </a>
 
             <div className="mt-16 grid gap-6 md:grid-cols-2">
               {services.map((s) => (
@@ -245,6 +271,53 @@ export default function Services() {
                 </div>
               ))}
             </div>
+
+            {/* ✅ NEW SECTION ADDED HERE (after the services cards grid, before PROCESS) */}
+            <section className="mt-16">
+              <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl">
+                <h2 className="text-2xl md:text-3xl font-extralight tracking-[-0.03em] text-neutral-100">
+                  Specialty pages
+                </h2>
+                <p className="mt-4 text-sm md:text-base font-light text-neutral-400 max-w-3xl">
+                  Deep dives built for operators searching for a specific
+                  outcome. Use these as landing pages for outreach and SEO.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href="/systems-audit"
+                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
+                  >
+                    Free Systems Audit
+                  </a>
+                  <a
+                    href="/systems-for-service-businesses"
+                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
+                  >
+                    Systems for Service Businesses
+                  </a>
+                  <a
+                    href="/website-design"
+                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
+                  >
+                    Website Design
+                  </a>
+                  <a
+                    href="/automation-for-local-business"
+                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
+                  >
+                    Automation for Local Business
+                  </a>
+                  <a
+                    href="/custom-software-development"
+                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
+                  >
+                    Custom Software Development
+                  </a>
+                </div>
+              </div>
+            </section>
+            {/* ✅ END NEW SECTION */}
           </div>
         </section>
 
@@ -317,7 +390,7 @@ export default function Services() {
                   "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
                 ].join(" ")}
               >
-                Schedule a Consultation
+                Request a Systems Assessment
               </button>
             </div>
           </div>

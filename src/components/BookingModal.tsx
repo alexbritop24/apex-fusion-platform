@@ -1,3 +1,4 @@
+// src/components/BookingModal.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
@@ -7,17 +8,64 @@ type BookingModalProps = {
   onClose: () => void;
 };
 
+type Timeline =
+  | ""
+  | "ASAP"
+  | "2-4 Weeks"
+  | "1-3 Months"
+  | "Exploring / Not sure yet";
+
+type BusinessType =
+  | ""
+  | "Barber / Salon"
+  | "Clinic / Medspa"
+  | "Home Services"
+  | "Agency"
+  | "Local Retail"
+  | "Professional Services"
+  | "Other";
+
+type Bottleneck =
+  | "Scheduling / calendar chaos"
+  | "Lead intake / forms"
+  | "Follow-ups / reminders"
+  | "Payments / invoicing"
+  | "Operations handoffs"
+  | "Reporting / visibility"
+  | "Automation / integrations"
+  | "Website / conversion";
+
 type FormState = {
   fullName: string;
   email: string;
   company: string;
+
+  // Qualification gate
+  businessType: BusinessType;
+  timeline: Timeline;
+  bottlenecks: Bottleneck[];
+
   message: string;
 };
+
+const BOTTLENECK_OPTIONS: Bottleneck[] = [
+  "Scheduling / calendar chaos",
+  "Lead intake / forms",
+  "Follow-ups / reminders",
+  "Payments / invoicing",
+  "Operations handoffs",
+  "Reporting / visibility",
+  "Automation / integrations",
+  "Website / conversion",
+];
 
 const initialState: FormState = {
   fullName: "",
   email: "",
   company: "",
+  businessType: "",
+  timeline: "",
+  bottlenecks: [],
   message: "",
 };
 
@@ -59,19 +107,31 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   if (!isOpen) return null;
 
+  const set = (key: keyof FormState) => (value: string) =>
+    setForm((prev) => ({ ...prev, [key]: value }));
+
+  const toggleBottleneck = (b: Bottleneck) => {
+    setForm((prev) => {
+      const exists = prev.bottlenecks.includes(b);
+      return {
+        ...prev,
+        bottlenecks: exists
+          ? prev.bottlenecks.filter((x) => x !== b)
+          : [...prev.bottlenecks, b],
+      };
+    });
+  };
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // Later: integrate with email service (Resend / Postmark / etc.)
     // For now: log safely (no secrets).
-    console.log("Booking request:", form);
+    console.log("Systems assessment request:", form);
 
     setSubmitted(true);
     setTimeout(() => onClose(), 2000);
   };
-
-  const set = (key: keyof FormState) => (value: string) =>
-    setForm((prev) => ({ ...prev, [key]: value }));
 
   return createPortal(
     <div
@@ -96,7 +156,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 Request a Systems Assessment
               </h2>
               <p className="mt-2 text-sm text-neutral-400">
-                Tell us what you’re building. We’ll respond with next steps.
+                Tell us about your workflows. We’ll evaluate fit and next steps.
               </p>
             </div>
 
@@ -119,6 +179,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-4">
+                {/* Identity */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label className="space-y-2">
                     <span className="text-sm text-neutral-300">Full Name</span>
@@ -157,13 +218,95 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   />
                 </label>
 
+                {/* Qualification gate */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <label className="space-y-2">
+                    <span className="text-sm text-neutral-300">
+                      Business type
+                    </span>
+                    <select
+                      value={form.businessType}
+                      onChange={(e) => set("businessType")(e.target.value)}
+                      className="w-full rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white focus:border-[#3F6E8F] focus:outline-none"
+                      required
+                    >
+                      <option value="" className="text-neutral-600">
+                        Select one…
+                      </option>
+                      <option value="Barber / Salon">Barber / Salon</option>
+                      <option value="Clinic / Medspa">Clinic / Medspa</option>
+                      <option value="Home Services">Home Services</option>
+                      <option value="Agency">Agency</option>
+                      <option value="Local Retail">Local Retail</option>
+                      <option value="Professional Services">
+                        Professional Services
+                      </option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </label>
+
+                  <label className="space-y-2">
+                    <span className="text-sm text-neutral-300">Timeline</span>
+                    <select
+                      value={form.timeline}
+                      onChange={(e) => set("timeline")(e.target.value)}
+                      className="w-full rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white focus:border-[#3F6E8F] focus:outline-none"
+                      required
+                    >
+                      <option value="" className="text-neutral-600">
+                        Select one…
+                      </option>
+                      <option value="ASAP">ASAP</option>
+                      <option value="2-4 Weeks">2–4 weeks</option>
+                      <option value="1-3 Months">1–3 months</option>
+                      <option value="Exploring / Not sure yet">
+                        Exploring / not sure yet
+                      </option>
+                    </select>
+                  </label>
+                </div>
+
+                <fieldset className="rounded-xl border border-neutral-800/60 bg-black/20 p-5">
+                  <legend className="px-1 text-sm text-neutral-300">
+                    What’s broken right now?{" "}
+                    <span className="text-neutral-500">(select all that apply)</span>
+                  </legend>
+
+                  <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+                    {BOTTLENECK_OPTIONS.map((b) => {
+                      const checked = form.bottlenecks.includes(b);
+                      return (
+                        <label
+                          key={b}
+                          className="flex items-start gap-3 rounded-lg border border-neutral-800 bg-neutral-950/60 px-4 py-3"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() => toggleBottleneck(b)}
+                            className="mt-1 h-4 w-4 accent-[#3F6E8F]"
+                          />
+                          <span className="text-sm font-light text-neutral-200">
+                            {b}
+                          </span>
+                        </label>
+                      );
+                    })}
+                  </div>
+
+                  <p className="mt-4 text-xs text-neutral-500">
+                    Tip: pick the bottlenecks that block speed, revenue, or
+                    visibility.
+                  </p>
+                </fieldset>
+
                 <label className="space-y-2 block">
                   <span className="text-sm text-neutral-300">Message</span>
                   <textarea
                     value={form.message}
                     onChange={(e) => set("message")(e.target.value)}
                     className="min-h-[120px] w-full resize-none rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white placeholder:text-neutral-600 focus:border-[#3F6E8F] focus:outline-none"
-                    placeholder="What are you looking to build?"
+                    placeholder="Briefly describe your current workflow and what you want the system to do."
                     required
                   />
                 </label>
@@ -181,6 +324,10 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 >
                   Submit Assessment Request
                 </button>
+
+                <p className="text-center text-xs text-neutral-500">
+                  15-minute fit call. No obligation.
+                </p>
               </form>
             )}
           </div>

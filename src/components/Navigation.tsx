@@ -21,6 +21,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
     () => [
       { to: "/", label: "Home" },
       { to: "/services", label: "Services" },
+      { to: "/systems-audit", label: "Free Systems Audit" }, // ← ADDED
       { to: "/about", label: "About" },
     ],
     []
