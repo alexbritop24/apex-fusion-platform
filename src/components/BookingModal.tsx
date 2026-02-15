@@ -138,7 +138,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     try {
       setSubmitting(true);
 
-      const message = [
+      const compiledMessage = [
         `Business type: ${form.businessType || "—"}`,
         `Timeline: ${form.timeline || "—"}`,
         `Bottlenecks: ${
@@ -153,7 +153,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         fullName: form.fullName.trim(),
         email: form.email.trim(),
         company: form.company.trim(),
-        message,
+        message: compiledMessage,
         website: honeypot, // must be empty
       };
 
@@ -166,7 +166,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       const data = await r.json().catch(() => ({}));
 
       if (!r.ok) {
-        throw new Error(data?.error || "Something failed while sending. Try again.");
+        throw new Error(
+          data?.error || "Something failed while sending. Try again."
+        );
       }
 
       setSubmitted(true);
@@ -202,7 +204,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   Request a Systems Assessment
                 </h2>
                 <p className="mt-2 text-sm text-neutral-400">
-                  Tell us about your workflows. We’ll evaluate fit and next steps.
+                  Tell us about your workflows. We’ll evaluate fit and next
+                  steps.
                 </p>
               </div>
 
@@ -337,7 +340,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 <fieldset className="rounded-xl border border-neutral-800/60 bg-black/20 p-5">
                   <legend className="px-1 text-sm text-neutral-300">
                     What’s broken right now?{" "}
-                    <span className="text-neutral-500">(select all that apply)</span>
+                    <span className="text-neutral-500">
+                      (select all that apply)
+                    </span>
                   </legend>
 
                   <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -363,7 +368,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </div>
 
                   <p className="mt-4 text-xs text-neutral-500">
-                    Tip: pick the bottlenecks that block speed, revenue, or visibility.
+                    Tip: pick the bottlenecks that block speed, revenue, or
+                    visibility.
                   </p>
                 </fieldset>
 
@@ -379,7 +385,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 </label>
               </div>
 
-              {/* Sticky submit bar (fixes “no submit visible”) */}
+              {/* Sticky submit bar (prevents “no submit visible”) */}
               <div className="sticky bottom-0 border-t border-neutral-800/60 bg-neutral-950/80 backdrop-blur-xl px-8 py-5">
                 <button
                   type="submit"
