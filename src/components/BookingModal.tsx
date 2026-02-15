@@ -1,3 +1,4 @@
+// src/components/BookingModal.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
@@ -70,8 +71,12 @@ const initialState: FormState = {
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
+
   const [submitting, setSubmitting] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  // honeypot (hidden). Must stay empty.
+  const [honeypot, setHoneypot] = useState("");
 
   const panelRef = useRef<HTMLDivElement | null>(null);
 
@@ -101,7 +106,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     if (!isOpen) {
       setSubmitted(false);
       setSubmitting(false);
-      setErrorMsg(null);
+      setError(null);
+      setHoneypot("");
       setForm(initialState);
     }
   }, [isOpen]);
@@ -125,51 +131,49 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMsg(null);
-    setSubmitting(true);
+    setError(null);
+
+    if (submitting) return;
 
     try {
-      const res = await fetch("/api/intake", {
+      setSubmitting(true);
+
+      const message = [
+        `Business type: ${form.businessType || "—"}`,
+        `Timeline: ${form.timeline || "—"}`,
+        `Bottlenecks: ${
+          form.bottlenecks.length ? form.bottlenecks.join(", ") : "—"
+        }`,
+        "",
+        form.message.trim(),
+      ].join("\n");
+
+      const payload = {
+        kind: "assessment",
+        fullName: form.fullName.trim(),
+        email: form.email.trim(),
+        company: form.company.trim(),
+        message,
+        website: honeypot, // must be empty
+      };
+
+      const r = await fetch("/api/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          kind: "assessment",
-          fullName: form.fullName,
-          email: form.email,
-          company: form.company,
-          message: [
-            `Business type: ${form.businessType || "—"}`,
-            `Timeline: ${form.timeline || "—"}`,
-            `Bottlenecks: ${
-              form.bottlenecks.length ? form.bottlenecks.join(", ") : "—"
-            }`,
-            "",
-            form.message,
-          ].join("\n"),
-          website: "",
-        }),
+        body: JSON.stringify(payload),
       });
 
-      const data = (await res.json().catch(() => null)) as
-        | { ok: true }
-        | { ok: false; error?: string; detail?: string }
-        | null;
+      const data = await r.json().catch(() => ({}));
 
-      if (!res.ok || !data || (data as any).ok !== true) {
-        const msg =
-          (data as any)?.error ||
-          (data as any)?.detail ||
-          "Something failed while sending. Try again.";
-        setErrorMsg(msg);
-        setSubmitting(false);
-        return;
+      if (!r.ok) {
+        throw new Error(data?.error || "Something failed while sending. Try again.");
       }
 
       setSubmitted(true);
-      setSubmitting(false);
-      setTimeout(() => onClose(), 1500);
-    } catch {
-      setErrorMsg("Network error. Please try again.");
+      setTimeout(() => onClose(), 1800);
+    } catch (err: any) {
+      setError(err?.message ?? "Something failed while sending. Try again.");
+    } finally {
       setSubmitting(false);
     }
   };
@@ -188,49 +192,62 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         <div
           ref={panelRef}
           tabIndex={-1}
-          className={[
-            "w-full max-w-2xl overflow-hidden rounded-2xl",
-            "border border-neutral-800/50 bg-neutral-900",
-            "shadow-2xl shadow-black/60 outline-none",
-          ].join(" ")}
+          className="w-full max-w-2xl rounded-2xl border border-neutral-800/50 bg-neutral-900 shadow-2xl shadow-black/60 outline-none overflow-hidden"
         >
           {/* Header */}
-          <div className="flex items-start justify-between gap-6 border-b border-neutral-800/60 px-8 py-6">
-            <div>
-              <h2 className="text-2xl font-extralight tracking-tight text-neutral-100">
-                Request a Systems Assessment
-              </h2>
-              <p className="mt-2 text-sm text-neutral-400">
-                Tell us about your workflows. We’ll evaluate fit and next steps.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-lg p-2 text-neutral-300 hover:text-white focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
-              aria-label="Close modal"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Body (scrollable) */}
-          <div className="max-h-[70vh] overflow-y-auto px-8 py-6">
-            {submitted ? (
-              <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6">
-                <p className="text-lg font-extralight text-neutral-100">
-                  Sent. Check your inbox — you should receive it immediately.
+          <div className="p-8 border-b border-neutral-800/60">
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <h2 className="text-2xl font-extralight tracking-tight text-neutral-100">
+                  Request a Systems Assessment
+                </h2>
+                <p className="mt-2 text-sm text-neutral-400">
+                  Tell us about your workflows. We’ll evaluate fit and next steps.
                 </p>
               </div>
-            ) : (
-              <form onSubmit={onSubmit} className="space-y-4">
-                {errorMsg ? (
-                  <div className="rounded-xl border border-red-900/40 bg-red-950/30 px-4 py-3 text-sm text-red-200">
-                    {errorMsg}
-                  </div>
-                ) : null}
 
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-lg p-2 text-neutral-300 hover:text-white focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
+                aria-label="Close modal"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {error ? (
+              <div className="mt-6 rounded-xl border border-red-900/40 bg-red-950/40 px-4 py-3 text-sm text-red-200">
+                {error}
+              </div>
+            ) : null}
+
+            {submitted ? (
+              <div className="mt-6 rounded-xl border border-neutral-800 bg-neutral-950 p-6">
+                <p className="text-lg font-extralight text-neutral-100">
+                  Submitted. We’ll reply within 24 hours.
+                </p>
+              </div>
+            ) : null}
+          </div>
+
+          {/* Body */}
+          {!submitted ? (
+            <form onSubmit={onSubmit}>
+              <div className="max-h-[60vh] overflow-auto p-8 space-y-4">
+                {/* Honeypot (hidden) */}
+                <div className="hidden">
+                  <label>
+                    Website
+                    <input
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      autoComplete="off"
+                    />
+                  </label>
+                </div>
+
+                {/* Identity */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label className="space-y-2">
                     <span className="text-sm text-neutral-300">Full Name</span>
@@ -241,7 +258,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       placeholder="Your name"
                       autoComplete="name"
                       required
-                      disabled={submitting}
                     />
                   </label>
 
@@ -255,7 +271,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       autoComplete="email"
                       type="email"
                       required
-                      disabled={submitting}
                     />
                   </label>
                 </div>
@@ -268,19 +283,20 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     className="w-full rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white placeholder:text-neutral-600 focus:border-[#3F6E8F] focus:outline-none"
                     placeholder="Company name"
                     autoComplete="organization"
-                    disabled={submitting}
                   />
                 </label>
 
+                {/* Qualification gate */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label className="space-y-2">
-                    <span className="text-sm text-neutral-300">Business type</span>
+                    <span className="text-sm text-neutral-300">
+                      Business type
+                    </span>
                     <select
                       value={form.businessType}
                       onChange={(e) => set("businessType")(e.target.value)}
                       className="w-full rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white focus:border-[#3F6E8F] focus:outline-none"
                       required
-                      disabled={submitting}
                     >
                       <option value="" className="text-neutral-600">
                         Select one…
@@ -304,7 +320,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       onChange={(e) => set("timeline")(e.target.value)}
                       className="w-full rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white focus:border-[#3F6E8F] focus:outline-none"
                       required
-                      disabled={submitting}
                     >
                       <option value="" className="text-neutral-600">
                         Select one…
@@ -338,7 +353,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                             checked={checked}
                             onChange={() => toggleBottleneck(b)}
                             className="mt-1 h-4 w-4 accent-[#3F6E8F]"
-                            disabled={submitting}
                           />
                           <span className="text-sm font-light text-neutral-200">
                             {b}
@@ -361,44 +375,33 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     className="min-h-[120px] w-full resize-none rounded-lg border border-neutral-800 bg-neutral-950 px-4 py-3 text-white placeholder:text-neutral-600 focus:border-[#3F6E8F] focus:outline-none"
                     placeholder="Briefly describe your current workflow and what you want the system to do."
                     required
-                    disabled={submitting}
                   />
                 </label>
+              </div>
 
-                {/* Spacer so the last field isn't hidden behind sticky footer */}
-                <div className="h-24" />
-              </form>
-            )}
-          </div>
+              {/* Sticky submit bar (fixes “no submit visible”) */}
+              <div className="sticky bottom-0 border-t border-neutral-800/60 bg-neutral-950/80 backdrop-blur-xl px-8 py-5">
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className={[
+                    "w-full rounded-lg py-4 font-semibold text-white",
+                    "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
+                    "shadow-xl shadow-[#3F6E8F]/20",
+                    "transition-all duration-500",
+                    "hover:from-[#5B8FB0] hover:to-[#3F6E8F] hover:shadow-[#5B8FB0]/25 hover:-translate-y-0.5",
+                    "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
+                    submitting ? "opacity-70 cursor-not-allowed" : "",
+                  ].join(" ")}
+                >
+                  {submitting ? "Sending..." : "Submit Assessment Request"}
+                </button>
 
-          {/* Sticky Footer (always visible submit) */}
-          {!submitted ? (
-            <div className="sticky bottom-0 border-t border-neutral-800/60 bg-neutral-900/95 px-8 py-5 backdrop-blur-xl">
-              <button
-                type="button"
-                onClick={() => {
-                  // trigger native form submit from sticky footer
-                  const formEl = panelRef.current?.querySelector("form");
-                  formEl?.requestSubmit?.();
-                }}
-                disabled={submitting}
-                className={[
-                  "w-full rounded-lg py-4 font-semibold text-white",
-                  "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
-                  "shadow-xl shadow-[#3F6E8F]/20",
-                  "transition-all duration-500",
-                  "hover:from-[#5B8FB0] hover:to-[#3F6E8F] hover:shadow-[#5B8FB0]/25 hover:-translate-y-0.5",
-                  "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
-                  submitting ? "opacity-70 cursor-not-allowed" : "",
-                ].join(" ")}
-              >
-                {submitting ? "Sending..." : "Submit Assessment Request"}
-              </button>
-
-              <p className="mt-3 text-center text-xs text-neutral-500">
-                15-minute fit call. No obligation.
-              </p>
-            </div>
+                <p className="mt-3 text-center text-xs text-neutral-500">
+                  We reply within 24 hours. 15-minute fit call. No obligation.
+                </p>
+              </div>
+            </form>
           ) : null}
         </div>
       </div>
