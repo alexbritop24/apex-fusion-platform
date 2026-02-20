@@ -128,10 +128,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       message
     ].join("\n");
 
-    // IMPORTANT:
-    // If your Resend account is still in testing mode, Resend will only allow sending
-    // to the account owner's email until you verify a domain + use a domain-based FROM.
-    const from = "no-reply@send.apexfusionstudios.com";
+   
+    const from = "no-reply@apexfusionstudios.com";
 
     const result = await resend.emails.send({
       from,
