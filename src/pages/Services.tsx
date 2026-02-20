@@ -9,8 +9,6 @@ import {
   Workflow,
   Database,
   ShieldCheck,
-  Gauge,
-  Boxes,
   ArrowRight,
   Check,
   LayoutTemplate,
@@ -30,7 +28,7 @@ export default function Services() {
     {
       title: "Custom Software Systems",
       description:
-        "Purpose-built software to run critical operations — designed for reliability, clarity, and long-term ownership.",
+        "Purpose-built software for critical operations — reliable, clear, and designed for long-term ownership.",
       bullets: [
         "Internal tools & operator dashboards",
         "Client portals & admin platforms",
@@ -42,7 +40,7 @@ export default function Services() {
     {
       title: "Automation & Workflows",
       description:
-        "Automation that removes manual coordination, reduces errors, and turns operations into a predictable system.",
+        "Automation that reduces manual coordination, cuts errors, and makes execution predictable.",
       bullets: [
         "Lead → intake → fulfillment pipelines",
         "Notifications, routing, and approvals",
@@ -54,7 +52,7 @@ export default function Services() {
     {
       title: "Digital Infrastructure",
       description:
-        "The backend foundations that let you scale: data, deployments, environments, and observability.",
+        "Backend foundations that let you scale: APIs, data, environments, deployments, and observability.",
       bullets: [
         "APIs, databases, auth, permissions",
         "Cloud deployments & CI/CD pipelines",
@@ -78,7 +76,7 @@ export default function Services() {
     {
       title: "Website Design",
       description:
-        "Premium marketing websites and product pages engineered for clarity, conversion, and long-term brand authority.",
+        "Premium marketing websites engineered for clarity, conversion, and brand authority.",
       bullets: [
         "High-end marketing sites (Vite/React)",
         "Information architecture & UX structure",
@@ -86,29 +84,6 @@ export default function Services() {
         "Deployment + analytics instrumentation",
       ],
       icon: <LayoutTemplate className="h-6 w-6" aria-hidden="true" />,
-    },
-  ];
-
-  const process = [
-    {
-      title: "Discovery",
-      desc: "We map goals to systems. We identify constraints, dependencies, and the highest-leverage path.",
-      icon: <Boxes className="h-5 w-5" aria-hidden="true" />,
-    },
-    {
-      title: "Architecture",
-      desc: "We design the system boundaries, data model, and workflows before writing production code.",
-      icon: <Database className="h-5 w-5" aria-hidden="true" />,
-    },
-    {
-      title: "Build",
-      desc: "We ship in focused increments. Every release is usable, testable, and measurable.",
-      icon: <Gauge className="h-5 w-5" aria-hidden="true" />,
-    },
-    {
-      title: "Scale",
-      desc: "We harden, automate, and expand capabilities — turning a build into infrastructure.",
-      icon: <ShieldCheck className="h-5 w-5" aria-hidden="true" />,
     },
   ];
 
@@ -120,12 +95,14 @@ export default function Services() {
         path="/services"
       />
 
-      <Navigation />
+      {/* ✅ IMPORTANT: wire navbar CTA */}
+      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-24">
         {/* HERO */}
-        <section className="relative overflow-hidden px-8 py-28 lg:px-16">
+        <section className="relative overflow-hidden px-8 py-24 lg:px-16">
           {/* subtle background orbs */}
           <div
             aria-hidden="true"
@@ -144,7 +121,7 @@ export default function Services() {
             </p>
 
             <h1 className="mt-5 text-5xl font-extralight leading-[1.05] tracking-[-0.04em] md:text-6xl lg:text-7xl">
-              Digital systems built to{" "}
+              Systems built to{" "}
               <span className="text-neutral-200">perform</span>.
               <br />
               Infrastructure you can{" "}
@@ -152,11 +129,8 @@ export default function Services() {
             </h1>
 
             <p className="mt-8 max-w-3xl text-lg font-light text-neutral-400 md:text-xl">
-              Apex Fusion Studios builds premium software, automation, and web
-              experiences for teams that value reliability, speed, and clean
-              execution. We also build product infrastructure — including our
-              flagship{" "}
-              <span className="text-neutral-200">Apex Booking System</span>.
+              We build software, automation, and high-end web experiences for
+              operators who need execution that stays stable as the business grows.
             </p>
 
             <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -186,20 +160,19 @@ export default function Services() {
         </section>
 
         {/* SERVICES GRID */}
-        <section id="offer" className="px-8 py-28 lg:px-16">
+        <section id="offer" className="px-8 py-20 lg:px-16">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-4xl font-extralight tracking-[-0.04em] md:text-5xl lg:text-6xl">
                 What we build
               </h2>
               <p className="mt-6 text-lg font-light text-neutral-400">
-                Not “deliverables.” Systems. Designed to remove friction,
-                automate coordination, and create compounding operational
-                leverage.
+                Systems designed to remove friction, automate coordination, and
+                create compounding operational leverage.
               </p>
             </div>
 
-            {/* NEW: Discoverable landing page link */}
+            {/* Discoverable landing page link */}
             <a
               href="/systems-for-service-businesses"
               className="group mt-12 block rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-[#3F6E8F]/60 hover:bg-neutral-900/40 focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
@@ -213,9 +186,8 @@ export default function Services() {
               </h3>
 
               <p className="mt-4 max-w-3xl text-sm font-light leading-relaxed text-neutral-400 md:text-base">
-                We rebuild operational backends so your business scales without
-                more headcount — intake, scheduling, follow-ups, fulfillment,
-                reporting, and automation.
+                Intake, scheduling, follow-ups, fulfillment, reporting, and automation —
+                rebuilt so you scale without chaos.
               </p>
 
               <p className="mt-6 text-sm font-semibold text-neutral-200 transition-colors duration-500 group-hover:text-[#5B8FB0]">
@@ -265,116 +237,24 @@ export default function Services() {
                       onClick={() => setBookingOpen(true)}
                       className="text-sm font-medium text-neutral-400 transition-colors duration-500 hover:text-[#3F6E8F] focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
                     >
-                      Discuss this build →
+                      Discuss this →
                     </button>
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* ✅ NEW SECTION ADDED HERE (after the services cards grid, before PROCESS) */}
-            <section className="mt-16">
-              <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl">
-                <h2 className="text-2xl md:text-3xl font-extralight tracking-[-0.03em] text-neutral-100">
-                  Specialty pages
-                </h2>
-                <p className="mt-4 text-sm md:text-base font-light text-neutral-400 max-w-3xl">
-                  Deep dives built for operators searching for a specific
-                  outcome. Use these as landing pages for outreach and SEO.
-                </p>
-
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href="/systems-audit"
-                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
-                  >
-                    Free Systems Audit
-                  </a>
-                  <a
-                    href="/systems-for-service-businesses"
-                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
-                  >
-                    Systems for Service Businesses
-                  </a>
-                  <a
-                    href="/website-design"
-                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
-                  >
-                    Website Design
-                  </a>
-                  <a
-                    href="/automation-for-local-business"
-                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
-                  >
-                    Automation for Local Business
-                  </a>
-                  <a
-                    href="/custom-software-development"
-                    className="rounded-full border border-neutral-800 bg-black/40 px-5 py-2 text-sm text-neutral-300 transition-all duration-500 hover:border-[#3F6E8F]/60 hover:text-white"
-                  >
-                    Custom Software Development
-                  </a>
-                </div>
-              </div>
-            </section>
-            {/* ✅ END NEW SECTION */}
-          </div>
-        </section>
-
-        {/* PROCESS */}
-        <section className="bg-neutral-950 px-8 py-28 lg:px-16">
-          <div className="mx-auto max-w-7xl">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-4xl font-extralight tracking-[-0.04em] md:text-5xl lg:text-6xl">
-                How we work
-              </h2>
-              <p className="mt-6 text-lg font-light text-neutral-400">
-                A disciplined process that reduces risk, accelerates delivery,
-                and produces systems that don’t degrade over time.
-              </p>
-            </div>
-
-            <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {process.map((p) => (
-                <div
-                  key={p.title}
-                  className="rounded-2xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl"
-                >
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
-                    {p.icon}
-                  </div>
-                  <h3 className="mt-6 text-xl font-light text-neutral-100">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 text-sm font-light leading-relaxed text-neutral-400">
-                    {p.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-16 flex justify-center">
-              <button
-                type="button"
-                onClick={() => setBookingOpen(true)}
-                className="text-sm font-medium text-neutral-400 transition-colors duration-500 hover:text-[#3F6E8F] focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
-              >
-                Start with discovery →
-              </button>
-            </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="px-8 py-28 lg:px-16">
+        <section className="px-8 py-24 lg:px-16">
           <div className="mx-auto max-w-6xl rounded-3xl border border-neutral-800/60 bg-black/30 p-10 text-center backdrop-blur-xl md:p-14">
             <h2 className="text-3xl font-extralight tracking-[-0.04em] md:text-4xl lg:text-5xl">
               Ready to replace friction with systems?
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg font-light text-neutral-400">
-              If you’re building something serious — and you’re ready to invest
-              in durable infrastructure — we’ll map the system and ship it with
-              precision.
+              We’ll review your workflow, confirm fit, and recommend the fastest path
+              to a stable, scalable system.
             </p>
 
             <div className="mt-10 flex justify-center">

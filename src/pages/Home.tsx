@@ -1,3 +1,4 @@
+// src/pages/Home.tsx
 import { useState } from "react";
 import SEO from "../components/SEO";
 import Navigation from "../components/Navigation";
@@ -13,9 +14,6 @@ import ProcessSection from "../components/ProcessSection";
 import AuthorityBlock from "../components/AuthorityBlock";
 import FounderBlock from "../components/FounderBlock";
 
-
-
-
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
 
@@ -23,7 +21,9 @@ export default function Home() {
     <div className="min-h-screen bg-black text-[#f5f5f5]">
       <SEO />
 
-      <Navigation />
+      {/* ✅ CHANGE: pass onOpenBooking so navbar CTA works */}
+      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+
       <BookingModal
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
@@ -36,7 +36,6 @@ export default function Home() {
           onSecondaryCTA={() => setBookingOpen(true)}
         />
 
-        
         <FounderBlock />
         <WhoWeWorkWith />
         <ProcessSection onOpenBooking={() => setBookingOpen(true)} />
