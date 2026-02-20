@@ -5,9 +5,7 @@ import apexLogoIcon from "../assets/logo/apex-logo-full-white.png";
 import { Menu, X } from "lucide-react";
 
 type NavigationProps = {
-  // Optional: if provided, we open the modal.
-  // If not provided, we route to /book (conversion upgrade path).
-  onOpenBooking?: () => void;
+  onOpenBooking?: () => void; // now optional
 };
 
 export default function Navigation({ onOpenBooking }: NavigationProps) {
@@ -24,7 +22,6 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
   }, []);
 
   useEffect(() => {
-    // Close mobile menu on route change
     setMobileOpen(false);
   }, [location.pathname]);
 
@@ -41,8 +38,11 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
   const isActive = (path: string) => location.pathname === path;
 
   const handleCTA = () => {
-    if (onOpenBooking) onOpenBooking();
-    else navigate("/book");
+    if (onOpenBooking) {
+      onOpenBooking();
+    } else {
+      navigate("/book");
+    }
   };
 
   return (
@@ -144,7 +144,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
         </div>
 
         {/* Mobile panel */}
-        {mobileOpen ? (
+        {mobileOpen && (
           <div className="md:hidden border-t border-neutral-800/50 bg-black/95 backdrop-blur-xl">
             <div className="mx-auto max-w-7xl px-8 py-6 space-y-4">
               <div className="flex flex-col gap-3">
@@ -189,7 +189,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
               </button>
             </div>
           </div>
-        ) : null}
+        )}
       </nav>
     </header>
   );
