@@ -1,4 +1,6 @@
+// src/components/AuthorityBlock.tsx
 import { Code, Shield, Workflow, Server, Check } from "lucide-react";
+import TechStackMarquee from "./TechStackMarquee";
 
 type Pillar = {
   title: string;
@@ -113,31 +115,22 @@ export default function AuthorityBlock() {
           ))}
         </div>
 
-        {/* Stack strip */}
-        <div className="mt-12 rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl">
-          <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
-            Technical stack
-          </p>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              "React + TypeScript",
-              "Automation workflows",
-              "APIs + integrations",
-              "Deployments + monitoring",
-              "Booking + payments",
-              "Dashboards + analytics",
-              "Data modeling",
-              "Security-minded delivery",
-            ].map((item) => (
-              <div
-                key={item}
-                className="rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm text-neutral-300"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
+        {/* ✅ Replace the old "Technical stack" block with an animated strip */}
+        <div className="mt-12">
+          <TechStackMarquee
+            items={[
+              "React",
+              "TypeScript",
+              "APIs",
+              "Automation",
+              "Vercel",
+              "Resend",
+              "Swift",
+              "Python",
+              "Dashboards",
+              "Integrations",
+            ]}
+          />
         </div>
       </div>
     </section>

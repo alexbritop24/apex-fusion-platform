@@ -21,3 +21,9 @@ body {
   min-height: 100vh;
   background: #000;
 }
+
+/* --- simple marquee animation (TechStackMarquee) --- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
