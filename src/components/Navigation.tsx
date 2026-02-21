@@ -5,7 +5,7 @@ import apexLogoIcon from "../assets/logo/apex-logo-full-white.png";
 import { Menu, X } from "lucide-react";
 
 type NavigationProps = {
-  onOpenBooking?: () => void; // now optional
+  onOpenBooking?: () => void;
 };
 
 export default function Navigation({ onOpenBooking }: NavigationProps) {
@@ -146,8 +146,8 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
         {/* Mobile panel */}
         {mobileOpen && (
           <div className="md:hidden border-t border-neutral-800/50 bg-black/95 backdrop-blur-xl">
-            <div className="mx-auto max-w-7xl px-8 py-6 space-y-4">
-              <div className="flex flex-col gap-3">
+            <div className="px-6 py-10">
+              <div className="flex flex-col items-center text-center gap-4">
                 {navItems.map((item) => {
                   const active = isActive(item.to);
                   return (
@@ -156,7 +156,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
                       to={item.to}
                       aria-current={active ? "page" : undefined}
                       className={[
-                        "rounded-lg px-3 py-2 text-sm",
+                        "w-full max-w-xs rounded-lg px-3 py-3 text-base font-light tracking-wide",
                         active
                           ? "text-white"
                           : "text-neutral-300 hover:text-white",
@@ -168,25 +168,25 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
                     </Link>
                   );
                 })}
-              </div>
 
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileOpen(false);
-                  handleCTA();
-                }}
-                className={[
-                  "w-full rounded-lg py-3 text-sm font-semibold text-white",
-                  "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
-                  "shadow-lg shadow-[#3F6E8F]/20",
-                  "transition-all duration-500",
-                  "hover:from-[#5B8FB0] hover:to-[#3F6E8F]",
-                  "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
-                ].join(" ")}
-              >
-                Request a Systems Assessment
-              </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    handleCTA();
+                  }}
+                  className={[
+                    "w-full max-w-xs rounded-lg py-3 text-sm font-semibold text-white",
+                    "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
+                    "shadow-lg shadow-[#3F6E8F]/20",
+                    "transition-all duration-500",
+                    "hover:from-[#5B8FB0] hover:to-[#3F6E8F]",
+                    "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
+                  ].join(" ")}
+                >
+                  Request a Systems Assessment
+                </button>
+              </div>
             </div>
           </div>
         )}
