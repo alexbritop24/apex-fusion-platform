@@ -1,3 +1,4 @@
+// src/components/Hero.tsx
 import { useEffect, useMemo, useState } from "react";
 
 type HeroProps = {
@@ -5,7 +6,7 @@ type HeroProps = {
   onSecondaryCTA: () => void;
 };
 
-export default function Hero({ onPrimaryCTA }: HeroProps) {
+export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function Hero({ onPrimaryCTA }: HeroProps) {
   const heroTranslate = useMemo(() => scrollY * 0.15, [scrollY]);
 
   return (
-    <section className="relative min-h-screen px-8 lg:px-16 py-32 overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden px-6 md:px-8 lg:px-16 py-28 md:py-32">
       {/* subtle background glow */}
       <div
         aria-hidden="true"
@@ -39,34 +40,34 @@ export default function Hero({ onPrimaryCTA }: HeroProps) {
           transform: `translateY(${heroTranslate}px)`,
         }}
       >
-        <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
           For serious operators
         </p>
 
-        <h1 className="mt-6 text-6xl md:text-7xl lg:text-8xl font-extralight tracking-[-0.04em] leading-none">
-          Replace manual chaos
-          <br />
-          with engineered systems.
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.04em] leading-[1.02]">
+          Stop running your business
+          <br className="hidden sm:block" />
+          on sticky notes and DMs.
         </h1>
 
-        <p className="mx-auto mt-10 max-w-3xl text-xl lg:text-2xl text-neutral-400 font-light">
-          We design custom software, automation workflows, and booking systems
-          that eliminate operational friction and give service businesses
-          durable infrastructure to scale.
+        <p className="mx-auto mt-8 max-w-3xl text-base sm:text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
+          We build custom software and automation so your{" "}
+          <span className="text-neutral-200">intake, scheduling, follow-ups,</span>{" "}
+          and internal operations run clean — without more headcount.
         </p>
 
-        {/* Qualification layer */}
-        <p className="mx-auto mt-6 max-w-2xl text-sm text-neutral-500">
-          Built for teams ready to invest in systems that compound — not
-          templates or one-off fixes.
+        <p className="mx-auto mt-5 max-w-2xl text-sm text-neutral-500">
+          If you’re ready to invest in a real system (not a quick patch), we’ll
+          map it and build it.
         </p>
 
-        <div className="mt-14 flex items-center justify-center gap-8">
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
           <button
             type="button"
             onClick={onPrimaryCTA}
             className={[
-              "rounded-full px-9 py-4 font-semibold text-white",
+              "w-full sm:w-auto",
+              "rounded-full px-9 py-4 text-sm font-semibold text-white",
               "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
               "shadow-xl shadow-[#3F6E8F]/25",
               "transition-all duration-500",
@@ -77,11 +78,26 @@ export default function Hero({ onPrimaryCTA }: HeroProps) {
           >
             Request a Systems Assessment
           </button>
+
+          <button
+            type="button"
+            onClick={onSecondaryCTA}
+            className={[
+              "w-full sm:w-auto",
+              "rounded-full px-9 py-4 text-sm font-semibold",
+              "border border-neutral-800 bg-black/30 text-neutral-200",
+              "backdrop-blur-xl",
+              "transition-all duration-500",
+              "hover:border-[#3F6E8F]/60 hover:text-white hover:-translate-y-1",
+              "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
+            ].join(" ")}
+          >
+            See what we build
+          </button>
         </div>
 
-        {/* Micro trust line */}
         <p className="mt-10 text-xs text-neutral-600 tracking-wide">
-          Custom infrastructure • Automation engineering • Apex Booking System
+          Custom software • Automation • Booking systems
         </p>
       </div>
     </section>
