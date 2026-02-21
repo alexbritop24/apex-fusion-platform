@@ -75,8 +75,7 @@ export default function Services() {
     },
     {
       title: "Website Design",
-      description:
-        "High-end websites built for clarity, credibility, and conversion.",
+      description: "High-end websites built for clarity, credibility, and conversion.",
       bullets: [
         "Modern marketing sites (Vite/React)",
         "Clear information architecture",
@@ -95,12 +94,10 @@ export default function Services() {
         path="/services"
       />
 
+      {/* ✅ IMPORTANT: wire navbar CTA */}
       <Navigation onOpenBooking={() => setBookingOpen(true)} />
 
-      <BookingModal
-        isOpen={bookingOpen}
-        onClose={() => setBookingOpen(false)}
-      />
+      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-24">
         {/* HERO */}
@@ -127,10 +124,10 @@ export default function Services() {
               Built to last.
             </h1>
 
+            {/* ✅ UPDATED (simpler) */}
             <p className="mt-8 max-w-3xl text-lg font-light text-neutral-400 md:text-xl">
-              We build software and automation that replaces manual work —
-              so your team runs faster, makes fewer mistakes, and scales
-              without chaos.
+              We build software, automation, and websites that remove manual work —
+              and stay reliable as you grow.
             </p>
 
             <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
