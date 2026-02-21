@@ -16,49 +16,47 @@ export default function About() {
 
   const principles: Principle[] = [
     {
-      title: "Systems over surface",
+      title: "Systems first",
       description:
-        "We design the underlying system first — data, workflows, permissions, failure modes — then we build the interface on top of it.",
+        "We map the workflow, data, permissions, and edge cases before we build the UI.",
       icon: <Workflow className="h-5 w-5" aria-hidden="true" />,
     },
     {
-      title: "Reliability is a feature",
+      title: "Built for real operations",
       description:
-        "The goal isn’t code that works today. It’s infrastructure that stays stable under real operational pressure.",
+        "Stable under pressure. Clear ownership. No fragile glue code.",
       icon: <ShieldCheck className="h-5 w-5" aria-hidden="true" />,
     },
     {
-      title: "Speed with discipline",
+      title: "Fast, but controlled",
       description:
-        "We ship in usable increments, minimize rework, and protect quality by making decisions at the architecture level.",
+        "We ship in usable increments and protect quality with disciplined decisions.",
       icon: <Gauge className="h-5 w-5" aria-hidden="true" />,
     },
   ];
 
   const whatWeDo = [
     "Custom software systems that run operations",
-    "Automation workflows that remove coordination overhead",
-    "Digital infrastructure: data, APIs, auth, deployments",
-    "Premium website design engineered for authority and conversion",
-    "Product development — including the Apex Booking System platform",
+    "Automation workflows (intake, routing, follow-ups, approvals)",
+    "Digital infrastructure (APIs, databases, auth, deployments)",
+    "Premium websites built for clarity and conversion",
+    "Product builds — including the Apex Booking System",
   ];
 
   return (
     <div className="min-h-screen bg-black text-[#f5f5f5]">
       <SEO
         title="About — Apex Fusion Studios"
-        description="Apex Fusion Studios is a premium software and automation company building digital systems and infrastructure for serious operators."
+        description="Apex Fusion Studios builds premium software systems, automation, and infrastructure for serious operators."
+        path="/about"
       />
 
-      <Navigation />
-      <BookingModal
-        isOpen={bookingOpen}
-        onClose={() => setBookingOpen(false)}
-      />
+      <Navigation onOpenBooking={() => setBookingOpen(true)} />
+      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
       <main id="main" className="pt-24">
         {/* HERO */}
-        <section className="relative overflow-hidden px-8 py-28 lg:px-16">
+        <section className="relative overflow-hidden px-8 py-24 lg:px-16 lg:py-28">
           {/* subtle background orbs */}
           <div
             aria-hidden="true"
@@ -77,21 +75,15 @@ export default function About() {
             </p>
 
             <h1 className="mt-5 text-5xl font-extralight leading-[1.05] tracking-[-0.04em] md:text-6xl lg:text-7xl">
-              We build infrastructure
+              We build systems
               <br />
               for teams that{" "}
               <span className="text-neutral-200">operate seriously</span>.
             </h1>
 
             <p className="mt-8 max-w-3xl text-lg font-light text-neutral-400 md:text-xl">
-              Apex Fusion Studios is a premium software and automation company.
-              We design and build digital systems that reduce operational
-              friction, enforce consistency, and create compounding leverage.
-              <span className="text-neutral-200">
-                {" "}
-                Not an agency. Not templates.
-              </span>{" "}
-              Real systems — built for long-term ownership.
+              Apex Fusion Studios builds software, automation, and infrastructure
+              that reduces manual work and makes execution predictable.
             </p>
 
             <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -107,30 +99,30 @@ export default function About() {
                   "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
                 ].join(" ")}
               >
-                Schedule a Consultation
+                Request a Systems Assessment
               </button>
 
               <a
-                href="#principles"
+                href="#approach"
                 className="inline-flex items-center gap-2 text-sm text-neutral-400 transition-colors duration-500 hover:text-[#3F6E8F] focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
               >
-                How we think <ArrowRight className="h-4 w-4" />
+                What we do <ArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
         </section>
 
-        {/* WHAT WE DO */}
-        <section className="px-8 py-28 lg:px-16">
+        {/* APPROACH (merged: what we do + how we think) */}
+        <section id="approach" className="px-8 py-24 lg:px-16 lg:py-28">
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:gap-20">
+            {/* Left */}
             <div>
               <h2 className="text-4xl font-extralight tracking-[-0.04em] md:text-5xl lg:text-6xl">
-                What we do
+                What we build
               </h2>
               <p className="mt-6 text-lg font-light text-neutral-400">
-                We partner with organizations that are ready to invest in durable
-                systems: software that stays clean, automation that stays
-                reliable, and infrastructure that scales without chaos.
+                Simple goal: replace messy operations with clear systems your
+                team can run every day.
               </p>
 
               <div className="mt-10 space-y-3">
@@ -142,15 +134,32 @@ export default function About() {
                         aria-hidden="true"
                       />
                     </span>
-                    <p className="text-sm font-light text-neutral-300">
-                      {item}
+                    <p className="text-sm font-light text-neutral-300">{item}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-14 grid gap-6 md:grid-cols-3">
+                {principles.map((p) => (
+                  <div
+                    key={p.title}
+                    className="rounded-2xl border border-neutral-800/60 bg-black/30 p-7 backdrop-blur-xl"
+                  >
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
+                      {p.icon}
+                    </div>
+                    <h3 className="mt-5 text-base font-light text-neutral-100">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm font-light leading-relaxed text-neutral-400">
+                      {p.description}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* RIGHT: GLASS PANEL */}
+            {/* Right */}
             <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl md:p-12">
               <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
                 Flagship platform
@@ -161,10 +170,13 @@ export default function About() {
               </h3>
 
               <p className="mt-5 text-base font-light leading-relaxed text-neutral-400">
-                A scheduling platform built to reduce no-shows, automate
-                workflows, and give operators real visibility. We build it as a
-                product — and we apply the same product discipline to every
-                system we deliver.
+                Scheduling + intake built to reduce no-shows, automate follow-ups,
+                and give you visibility into what’s happening.
+              </p>
+
+              <p className="mt-4 text-sm font-light text-neutral-400">
+                Same discipline we use on client systems: clarity, reliability,
+                and long-term ownership.
               </p>
 
               <button
@@ -172,60 +184,21 @@ export default function About() {
                 onClick={() => setBookingOpen(true)}
                 className="mt-8 text-sm font-medium text-neutral-400 transition-colors duration-500 hover:text-[#3F6E8F] focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
               >
-                Discuss the platform →
+                Discuss your system →
               </button>
             </div>
           </div>
         </section>
 
-        {/* PRINCIPLES */}
-        <section
-          id="principles"
-          className="bg-neutral-950 px-8 py-28 lg:px-16"
-        >
-          <div className="mx-auto max-w-7xl">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-4xl font-extralight tracking-[-0.04em] md:text-5xl lg:text-6xl">
-                How we think
-              </h2>
-              <p className="mt-6 text-lg font-light text-neutral-400">
-                Our work is guided by fundamentals: clarity, durability, and
-                execution. This is what keeps systems stable as the business
-                grows.
-              </p>
-            </div>
-
-            <div className="mt-16 grid gap-6 md:grid-cols-3">
-              {principles.map((p) => (
-                <div
-                  key={p.title}
-                  className="rounded-2xl border border-neutral-800/60 bg-black/30 p-9 backdrop-blur-xl"
-                >
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
-                    {p.icon}
-                  </div>
-                  <h3 className="mt-6 text-xl font-light text-neutral-100">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 text-sm font-light leading-relaxed text-neutral-400">
-                    {p.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="px-8 py-28 lg:px-16">
+        <section className="px-8 py-24 lg:px-16 lg:py-28">
           <div className="mx-auto max-w-6xl rounded-3xl border border-neutral-800/60 bg-black/30 p-10 text-center backdrop-blur-xl md:p-14">
             <h2 className="text-3xl font-extralight tracking-[-0.04em] md:text-4xl lg:text-5xl">
-              Build something exceptional
+              Ready to clean up operations?
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg font-light text-neutral-400">
-              If you’re ready to replace manual operations with engineered
-              systems, we’ll help you design the architecture and ship it with
-              precision.
+              If you want fewer manual steps and more predictable execution,
+              we’ll map the system and ship the build.
             </p>
 
             <div className="mt-10 flex justify-center">
@@ -241,9 +214,13 @@ export default function About() {
                   "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
                 ].join(" ")}
               >
-                Schedule a Consultation
+                Request a Systems Assessment
               </button>
             </div>
+
+            <p className="mt-5 text-xs text-neutral-500">
+              Prefer email? apexfusionstudiosusa@gmail.com
+            </p>
           </div>
         </section>
 

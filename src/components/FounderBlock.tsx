@@ -5,57 +5,53 @@ export default function FounderBlock() {
   const points = [
     {
       title: "Built to last",
-      desc: "We create systems you can own and extend — not quick fixes that break when you grow.",
+      desc: "We build systems you can own and rely on — clean foundations that don’t break as you grow.",
       icon: ShieldCheck,
     },
     {
-      title: "Designed around your workflow",
-      desc: "Intake, scheduling, follow-ups, fulfillment, reporting — everything starts with how you actually operate.",
+      title: "Operations-first",
+      desc: "We start with your workflow: intake, scheduling, follow-ups, fulfillment, and reporting.",
       icon: Wrench,
     },
     {
-      title: "Executed with discipline",
-      desc: "Clean architecture, clear logic, and structured delivery from start to finish.",
+      title: "Product-level execution",
+      desc: "Clear architecture, clear interfaces, disciplined delivery — the same standard we use for our own platform.",
       icon: Layers,
     },
   ];
 
   return (
-    <section className="px-6 md:px-8 lg:px-16 py-20 md:py-24">
+    <section className="px-8 lg:px-16 py-20">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-14 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
           {/* Left */}
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
               Founder-led delivery
             </p>
 
-            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100 leading-[1.05]">
+            <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
               Built by engineers.
               <br />
               Designed for operators.
             </h2>
 
-            <p className="mt-6 text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
-              We build custom software and automation for service businesses
-              that are outgrowing spreadsheets, DMs, and patchwork tools.
+            <p className="mt-6 text-lg font-light text-neutral-400 leading-relaxed">
+              We build software and automation that replaces manual work —
+              booking, workflows, integrations, and internal dashboards —
+              so you can scale without chaos.
             </p>
 
-            <p className="mt-5 text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
-              The goal is simple: fewer manual steps, clearer processes,
-              and systems that support growth instead of slowing it down.
-            </p>
-
-            <p className="mt-6 text-sm text-neutral-500 font-light leading-relaxed">
-              Our flagship product — the Apex Booking System — reflects the same
-              standards we apply to every client build.
+            <p className="mt-6 text-sm font-light text-neutral-500 leading-relaxed">
+              If you’re ready to invest in a real system (not a quick fix), we’ll
+              map the workflow and ship it clean.
             </p>
           </div>
 
           {/* Right */}
-          <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 md:p-10 backdrop-blur-xl">
+          <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl md:p-12">
             <p className="text-xs uppercase tracking-[0.22em] text-neutral-500">
-              How we work
+              Principles
             </p>
 
             <div className="mt-8 space-y-8">
@@ -70,7 +66,7 @@ export default function FounderBlock() {
                       />
                     </div>
                     <div>
-                      <h3 className="text-base sm:text-lg font-light text-neutral-100">
+                      <h3 className="text-lg font-light text-neutral-100">
                         {p.title}
                       </h3>
                       <p className="mt-2 text-sm font-light leading-relaxed text-neutral-400">
@@ -84,7 +80,7 @@ export default function FounderBlock() {
 
             <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-950 px-6 py-5">
               <p className="text-sm font-light text-neutral-300">
-                If you’re ready to replace manual operations with a real system,
+                If you want a stable system that actually runs the business,
                 we’ll be a strong fit.
               </p>
             </div>
