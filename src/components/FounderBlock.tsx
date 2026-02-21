@@ -1,68 +1,61 @@
+// src/components/FounderBlock.tsx
 import { ShieldCheck, Wrench, Layers } from "lucide-react";
 
 export default function FounderBlock() {
   const points = [
     {
-      title: "Durability over novelty",
-      desc: "We build systems you can own, extend, and rely on — not trendy prototypes that collapse under growth.",
+      title: "Built to last",
+      desc: "We create systems you can own and extend — not quick fixes that break when you grow.",
       icon: ShieldCheck,
     },
     {
-      title: "Operations-first engineering",
-      desc: "Everything starts with your workflows: intake, scheduling, follow-ups, fulfillment, and reporting.",
+      title: "Designed around your workflow",
+      desc: "Intake, scheduling, follow-ups, fulfillment, reporting — everything starts with how you actually operate.",
       icon: Wrench,
     },
     {
-      title: "Product-level execution",
-      desc: "Clean architecture, clear interfaces, and disciplined delivery — the same standards we apply to our own platform.",
+      title: "Executed with discipline",
+      desc: "Clean architecture, clear logic, and structured delivery from start to finish.",
       icon: Layers,
     },
   ];
 
   return (
-    <section className="px-8 lg:px-16 py-24">
+    <section className="px-6 md:px-8 lg:px-16 py-20 md:py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-14 lg:grid-cols-2 lg:items-start">
           {/* Left */}
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
               Founder-led delivery
             </p>
 
-            <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
+            <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100 leading-[1.05]">
               Built by engineers.
               <br />
               Designed for operators.
             </h2>
 
-            <p className="mt-6 text-lg font-light text-neutral-400 leading-relaxed">
-              Apex Fusion Studios builds software and automation for established
-              service businesses that are outgrowing duct-taped tools. We engineer
-              operational backends — booking, workflows, integrations, and internal
-              dashboards — so you can scale without multiplying headcount.
+            <p className="mt-6 text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
+              We build custom software and automation for service businesses
+              that are outgrowing spreadsheets, DMs, and patchwork tools.
             </p>
 
-            <p className="mt-6 text-sm font-light text-neutral-500 leading-relaxed">
-              We ship with a product mindset across React + TypeScript, Swift, and
-              Python — building durable systems with clear ownership, clean
-              interfaces, and long-term maintainability.
+            <p className="mt-5 text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
+              The goal is simple: fewer manual steps, clearer processes,
+              and systems that support growth instead of slowing it down.
             </p>
 
-            <p className="mt-4 text-xs uppercase tracking-[0.22em] text-neutral-500">
-              Stack: React / TypeScript · Swift · Python
-            </p>
-
-            <p className="mt-6 text-sm font-light text-neutral-500 leading-relaxed">
-              Our flagship platform — the Apex Booking System — is the standard
-              we hold ourselves to: production-grade, maintainable, and built to
-              scale.
+            <p className="mt-6 text-sm text-neutral-500 font-light leading-relaxed">
+              Our flagship product — the Apex Booking System — reflects the same
+              standards we apply to every client build.
             </p>
           </div>
 
           {/* Right */}
-          <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl md:p-12">
+          <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 md:p-10 backdrop-blur-xl">
             <p className="text-xs uppercase tracking-[0.22em] text-neutral-500">
-              Principles
+              How we work
             </p>
 
             <div className="mt-8 space-y-8">
@@ -77,7 +70,7 @@ export default function FounderBlock() {
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg font-light text-neutral-100">
+                      <h3 className="text-base sm:text-lg font-light text-neutral-100">
                         {p.title}
                       </h3>
                       <p className="mt-2 text-sm font-light leading-relaxed text-neutral-400">
@@ -91,8 +84,8 @@ export default function FounderBlock() {
 
             <div className="mt-10 rounded-2xl border border-neutral-800 bg-neutral-950 px-6 py-5">
               <p className="text-sm font-light text-neutral-300">
-                If you’re serious about replacing manual operations with durable
-                systems, we’ll be a strong fit.
+                If you’re ready to replace manual operations with a real system,
+                we’ll be a strong fit.
               </p>
             </div>
           </div>
