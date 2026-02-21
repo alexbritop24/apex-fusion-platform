@@ -45,20 +45,19 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
         </p>
 
         <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.04em] leading-[1.02]">
-          Stop running your business
+          Replace manual chaos
           <br className="hidden sm:block" />
-          on sticky notes and DMs.
+          with engineered systems.
         </h1>
 
+        {/* ✅ SIMPLIFIED COPY */}
         <p className="mx-auto mt-8 max-w-3xl text-base sm:text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
-          We build custom software and automation so your{" "}
-          <span className="text-neutral-200">intake, scheduling, follow-ups,</span>{" "}
-          and internal operations run clean — without more headcount.
+          We build software and automation that replaces manual work —
+          so your business runs clean, fast, and without chaos.
         </p>
 
         <p className="mx-auto mt-5 max-w-2xl text-sm text-neutral-500">
-          If you’re ready to invest in a real system (not a quick patch), we’ll
-          map it and build it.
+          If you're ready to invest in a real system (not a patch), we’ll map it and build it.
         </p>
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
