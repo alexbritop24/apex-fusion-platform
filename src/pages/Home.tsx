@@ -5,7 +5,6 @@ import Navigation from "../components/Navigation";
 import BookingModal from "../components/BookingModal";
 import Hero from "../components/Hero";
 import PlatformHighlight from "../components/PlatformHighlight";
-import CapabilitiesGrid from "../components/CapabilitiesGrid";
 import ProofSection from "../components/ProofSection";
 import FinalCTA from "../components/FinalCTA";
 import Footer from "../components/Footer";
@@ -21,15 +20,10 @@ export default function Home() {
     <div className="min-h-screen bg-black text-[#f5f5f5]">
       <SEO />
 
-      {/* ✅ CHANGE: pass onOpenBooking so navbar CTA works */}
       <Navigation onOpenBooking={() => setBookingOpen(true)} />
 
-      <BookingModal
-        isOpen={bookingOpen}
-        onClose={() => setBookingOpen(false)}
-      />
+      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
-      {/* pt-24 matches Navigation h-24 */}
       <main id="main" className="pt-24">
         <Hero
           onPrimaryCTA={() => setBookingOpen(true)}
@@ -38,11 +32,15 @@ export default function Home() {
 
         <FounderBlock />
         <WhoWeWorkWith />
+
         <ProcessSection onOpenBooking={() => setBookingOpen(true)} />
+
+        {/* Keep AuthorityBlock + ProofSection as the single source of truth */}
         <AuthorityBlock />
+
         <PlatformHighlight onOpenBooking={() => setBookingOpen(true)} />
-        <CapabilitiesGrid />
         <ProofSection />
+
         <FinalCTA onOpenBooking={() => setBookingOpen(true)} />
         <Footer />
       </main>
