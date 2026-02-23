@@ -1,3 +1,4 @@
+// src/pages/About.tsx
 import { useState } from "react";
 import SEO from "../components/SEO";
 import Navigation from "../components/Navigation";
@@ -54,10 +55,10 @@ export default function About() {
       <Navigation onOpenBooking={() => setBookingOpen(true)} />
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
-      <main id="main" className="pt-24">
+      {/* ✅ FIX: mobile nav is h-16, desktop nav is h-24 */}
+      <main id="main" className="pt-16 md:pt-24">
         {/* HERO */}
         <section className="relative overflow-hidden px-8 py-24 lg:px-16 lg:py-28">
-          {/* subtle background orbs */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full blur-3xl"
@@ -112,7 +113,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* APPROACH (merged: what we do + how we think) */}
+        {/* APPROACH */}
         <section id="approach" className="px-8 py-24 lg:px-16 lg:py-28">
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:gap-20">
             {/* Left */}
@@ -120,6 +121,7 @@ export default function About() {
               <h2 className="text-4xl font-extralight tracking-[-0.04em] md:text-5xl lg:text-6xl">
                 What we build
               </h2>
+
               <p className="mt-6 text-lg font-light text-neutral-400">
                 Simple goal: replace messy operations with clear systems your
                 team can run every day.
@@ -148,9 +150,11 @@ export default function About() {
                     <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
                       {p.icon}
                     </div>
+
                     <h3 className="mt-5 text-base font-light text-neutral-100">
                       {p.title}
                     </h3>
+
                     <p className="mt-2 text-sm font-light leading-relaxed text-neutral-400">
                       {p.description}
                     </p>
@@ -196,6 +200,7 @@ export default function About() {
             <h2 className="text-3xl font-extralight tracking-[-0.04em] md:text-4xl lg:text-5xl">
               Ready to clean up operations?
             </h2>
+
             <p className="mx-auto mt-6 max-w-3xl text-lg font-light text-neutral-400">
               If you want fewer manual steps and more predictable execution,
               we’ll map the system and ship the build.
