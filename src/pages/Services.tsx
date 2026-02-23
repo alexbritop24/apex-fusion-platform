@@ -75,7 +75,8 @@ export default function Services() {
     },
     {
       title: "Website Design",
-      description: "High-end websites built for clarity, credibility, and conversion.",
+      description:
+        "High-end websites built for clarity, credibility, and conversion.",
       bullets: [
         "Modern marketing sites (Vite/React)",
         "Clear information architecture",
@@ -99,7 +100,8 @@ export default function Services() {
 
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
-      <main id="main" className="pt-24">
+      {/* ✅ FIX: mobile nav is h-16, desktop nav is h-24 */}
+      <main id="main" className="pt-16 md:pt-24">
         {/* HERO */}
         <section className="relative overflow-hidden px-8 py-24 lg:px-16">
           <div
@@ -126,8 +128,8 @@ export default function Services() {
 
             {/* ✅ UPDATED (simpler) */}
             <p className="mt-8 max-w-3xl text-lg font-light text-neutral-400 md:text-xl">
-              We build software, automation, and websites that remove manual work —
-              and stay reliable as you grow.
+              We build software, automation, and websites that remove manual work
+              — and stay reliable as you grow.
             </p>
 
             <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
