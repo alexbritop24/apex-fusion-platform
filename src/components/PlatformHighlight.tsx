@@ -11,44 +11,48 @@ const features = [
   "Analytics dashboard",
 ];
 
-export default function PlatformHighlight({ onOpenBooking }: PlatformHighlightProps) {
+export default function PlatformHighlight({
+  onOpenBooking,
+}: PlatformHighlightProps) {
   return (
-    <section className="bg-neutral-950/30 px-8 lg:px-16 py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+    <section className="bg-neutral-950/30 px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Left: content */}
         <div>
-          <p className="text-xs tracking-widest uppercase text-brand-400">
-            Flagship Product
+          <p className="text-[11px] uppercase tracking-[0.22em] text-brand-400">
+            Flagship product
           </p>
 
-          <h2 className="mt-4 text-5xl lg:text-6xl font-extralight tracking-tight leading-none">
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] leading-[1.02] text-neutral-100">
             Apex Booking System
           </h2>
 
-          <p className="mt-6 text-lg text-neutral-400 max-w-xl">
-            Enterprise-grade scheduling infrastructure built for teams that want fewer
-            missed appointments, tighter operations, and a booking experience that feels
-            premium end-to-end.
+          <p className="mt-5 max-w-xl text-base sm:text-lg font-light leading-relaxed text-neutral-400">
+            Scheduling infrastructure built to reduce missed appointments,
+            tighten operations, and deliver a premium booking experience end-to-end.
           </p>
 
-          <ul className="mt-10 space-y-4">
+          <ul className="mt-8 space-y-4">
             {features.map((f) => (
               <li key={f} className="flex items-start gap-3 text-neutral-300">
-                <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-neutral-900 border border-neutral-800">
-                  <Check className="h-4 w-4 text-brand-400" />
+                <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-neutral-900 border border-neutral-800">
+                  <Check className="h-3.5 w-3.5 text-brand-400" />
                 </span>
-                <span className="text-base">{f}</span>
+                <span className="text-sm sm:text-base font-light">{f}</span>
               </li>
             ))}
           </ul>
 
-          <div className="mt-10">
+          <div className="mt-8">
             <button
               type="button"
               onClick={onOpenBooking}
-              className="group inline-flex items-center gap-2 text-brand-400 hover:text-brand-500 transition-colors duration-500 focus-visible:ring-2 focus-visible:ring-brand-400 rounded-md px-2 py-2 -ml-2"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-brand-400 hover:text-brand-500 transition-colors duration-500 focus-visible:ring-2 focus-visible:ring-brand-400 rounded-md px-2 py-2 -ml-2"
             >
-              Experience it yourself <span className="transition-transform duration-500 group-hover:translate-x-0.5">→</span>
+              Experience it yourself
+              <span className="transition-transform duration-500 group-hover:translate-x-0.5">
+                →
+              </span>
             </button>
           </div>
         </div>
@@ -63,11 +67,13 @@ export default function PlatformHighlight({ onOpenBooking }: PlatformHighlightPr
                 <span className="h-2.5 w-2.5 rounded-full bg-neutral-700" />
                 <span className="h-2.5 w-2.5 rounded-full bg-neutral-700" />
               </div>
+
               <div className="flex-1 px-4">
                 <div className="mx-auto max-w-sm rounded-full border border-neutral-800 bg-neutral-950 px-4 py-1.5 text-xs text-neutral-400">
                   apexbooking.com/dashboard
                 </div>
               </div>
+
               <div className="w-10" />
             </div>
 
@@ -76,7 +82,9 @@ export default function PlatformHighlight({ onOpenBooking }: PlatformHighlightPr
               <div className="flex items-start justify-between gap-8">
                 <div>
                   <p className="text-sm text-neutral-400">Dashboard</p>
-                  <h3 className="mt-2 text-2xl font-extralight">Upcoming Appointments</h3>
+                  <h3 className="mt-2 text-2xl font-extralight text-neutral-100">
+                    Upcoming Appointments
+                  </h3>
                 </div>
 
                 <div className="hidden sm:block rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3">
@@ -125,10 +133,10 @@ function AppointmentRow({
   return (
     <div className="flex items-center justify-between gap-4 rounded-xl border border-neutral-800/70 bg-neutral-950 px-4 py-3 transition-transform duration-500 hover:translate-y-[-1px]">
       <div className="flex items-center gap-4">
-        <div className="text-sm text-neutral-400 w-20">{time}</div>
+        <div className="w-20 text-sm text-neutral-400">{time}</div>
 
         <div className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs text-brand-400">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-800 bg-neutral-900 text-xs text-brand-400">
             {initials}
           </div>
           <div className="text-sm text-neutral-200">{name}</div>
