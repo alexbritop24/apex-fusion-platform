@@ -57,43 +57,43 @@ function isCaseStudy(e: Engagement): e is CaseStudyEngagement {
 
 export default function ProofSection() {
   return (
-    <section className="bg-neutral-950 px-8 py-32 lg:px-16">
+    <section className="bg-neutral-950/30 px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
-            Selected Engagements
+          <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
+            Selected engagements
           </p>
 
-          <h2 className="mt-6 text-5xl font-extralight tracking-[-0.04em] text-neutral-100 lg:text-6xl">
-            Systems That Compound
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
+            Systems that compound
           </h2>
 
-          <p className="mt-6 text-lg font-light text-neutral-400">
-            Real-world implementations focused on durability, operational clarity,
-            and scalable infrastructure.
+          <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
+            Real builds focused on durability, operational clarity, and stable
+            infrastructure.
           </p>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
           {(engagements as Engagement[]).map((e) => (
             <article
               key={e.title}
-              className="group rounded-2xl border border-neutral-800 bg-black/40 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-[#3F6E8F]/40"
+              className="group rounded-3xl border border-neutral-800/60 bg-black/30 p-8 md:p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
             >
-              <p className="text-xs uppercase tracking-widest text-[#3F6E8F]">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
                 {e.category}
               </p>
 
-              <h3 className="mt-6 text-2xl font-light text-neutral-100 transition-colors duration-500 group-hover:text-white">
+              <h3 className="mt-5 text-xl md:text-2xl font-light text-neutral-100 transition-colors duration-500 group-hover:text-white">
                 {e.title}
               </h3>
 
-              <p className="mt-6 text-sm leading-relaxed text-neutral-400">
+              <p className="mt-4 text-sm font-light leading-relaxed text-neutral-400">
                 {e.description}
               </p>
 
               {isCaseStudy(e) ? (
-                <div className="mt-6 space-y-3 text-sm font-light text-neutral-400">
+                <div className="mt-5 space-y-3 text-sm font-light text-neutral-400">
                   <p>
                     <span className="text-neutral-200">Before:</span> {e.before}
                   </p>
@@ -106,7 +106,7 @@ export default function ProofSection() {
                 </div>
               ) : null}
 
-              <p className="mt-8 text-xs text-neutral-500">Context: {e.context}</p>
+              <p className="mt-6 text-xs text-neutral-500">Context: {e.context}</p>
             </article>
           ))}
         </div>
