@@ -53,37 +53,41 @@ export default function AuthorityBlock() {
   ];
 
   return (
-    <section className="px-8 lg:px-16 py-28">
+    <section className="px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
             Credibility
           </p>
-          <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em]">
+
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em]">
             Infrastructure-first.
             <br />
             Built to compound.
           </h2>
-          <p className="mt-6 text-lg font-light text-neutral-400">
+
+          <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
             We deliver systems that stay reliable under growth: software,
             automation, and operational platforms.
           </p>
         </div>
 
         {/* Pillars grid */}
-        <div className="mt-16 grid gap-px bg-neutral-800/60 rounded-3xl overflow-hidden md:grid-cols-2">
+        <div className="mt-14 grid gap-px bg-neutral-800/60 rounded-3xl overflow-hidden md:grid-cols-2">
           {pillars.map((p) => {
             const Icon = p.icon;
             return (
               <div
                 key={p.title}
-                className="bg-black p-10 md:p-12 transition-all duration-500 hover:bg-neutral-900/60"
+                className="bg-black p-8 md:p-10 transition-all duration-500 hover:bg-neutral-900/60"
               >
                 <Icon className="h-8 w-8 text-[#3F6E8F]" aria-hidden="true" />
-                <h3 className="mt-6 text-2xl font-light text-neutral-100">
+
+                <h3 className="mt-5 text-xl md:text-2xl font-light text-neutral-100">
                   {p.title}
                 </h3>
-                <p className="mt-4 text-sm font-light leading-relaxed text-neutral-400">
+
+                <p className="mt-3 text-sm font-light leading-relaxed text-neutral-400">
                   {p.desc}
                 </p>
               </div>
@@ -96,7 +100,7 @@ export default function AuthorityBlock() {
           {signals.map((s) => (
             <div
               key={s.title}
-              className="rounded-2xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl"
+              className="rounded-2xl border border-neutral-800/60 bg-black/30 p-7 md:p-8 backdrop-blur-xl"
             >
               <div className="flex items-start gap-3">
                 <div className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950">
@@ -115,8 +119,8 @@ export default function AuthorityBlock() {
           ))}
         </div>
 
-        {/* ✅ Replace the old "Technical stack" block with an animated strip */}
-        <div className="mt-12">
+        {/* Tech stack marquee */}
+        <div className="mt-10">
           <TechStackMarquee
             items={[
               "React",
