@@ -1,3 +1,4 @@
+// src/components/CapabilitiesGrid.tsx
 import { Code, Zap, Layers, Database } from "lucide-react";
 
 const capabilities = [
@@ -25,24 +26,32 @@ const capabilities = [
 
 export default function CapabilitiesGrid() {
   return (
-    <section className="px-8 lg:px-16 py-32">
+    <section className="px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
-        <h2 className="text-center text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
-          What We Build
-        </h2>
+        <div className="text-center">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-brand-400">
+            Capabilities
+          </p>
 
-        <div className="mt-20 bg-neutral-800/60 rounded-3xl overflow-hidden border border-neutral-800">
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
+            What we build
+          </h2>
+        </div>
+
+        <div className="mt-14 rounded-3xl border border-neutral-800 bg-neutral-800/60 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px">
             {capabilities.map(({ title, description, Icon }) => (
               <div
                 key={title}
-                className="group relative bg-black p-12 transition-all duration-500 hover:bg-neutral-900/90 hover:-translate-y-1 cursor-pointer"
+                className="group relative bg-black p-8 md:p-10 transition-colors duration-500 hover:bg-neutral-900/70"
               >
-                <Icon className="h-12 w-12 text-brand-400 transition-all duration-500 group-hover:text-brand-300" />
-                <h3 className="mt-6 text-3xl md:text-4xl font-light text-neutral-100 transition-colors duration-500 group-hover:text-brand-400">
+                <Icon className="h-8 w-8 text-brand-400 transition-colors duration-500 group-hover:text-brand-300" />
+
+                <h3 className="mt-5 text-xl md:text-2xl font-light text-neutral-100 transition-colors duration-500 group-hover:text-brand-400">
                   {title}
                 </h3>
-                <p className="mt-4 text-lg text-neutral-400 max-w-lg">
+
+                <p className="mt-3 text-sm sm:text-base font-light text-neutral-400 max-w-md">
                   {description}
                 </p>
               </div>
