@@ -1,3 +1,4 @@
+// src/components/WhoWeWorkWith.tsx
 import { Check, X } from "lucide-react";
 
 export default function WhoWeWorkWith() {
@@ -32,22 +33,22 @@ export default function WhoWeWorkWith() {
   ];
 
   return (
-    <section className="px-8 lg:px-16 py-28">
+    <section className="px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em]">
             Fit matters.
           </h2>
-          <p className="mt-6 text-lg font-light text-neutral-400">
+          <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
             We work with operators who want durable systems — the kind that keep
             working as you grow.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-2">
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
           {/* GOOD FIT */}
-          <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl md:p-12">
-            <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
+          <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 md:p-10 backdrop-blur-xl">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
               Who we work with
             </p>
 
@@ -58,7 +59,7 @@ export default function WhoWeWorkWith() {
                     <Check className="h-4 w-4 text-[#3F6E8F]" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-light text-neutral-100">
+                    <h3 className="text-base font-light text-neutral-100">
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm font-light leading-relaxed text-neutral-400">
@@ -69,15 +70,15 @@ export default function WhoWeWorkWith() {
               ))}
             </div>
 
-            <p className="mt-10 text-sm font-light text-neutral-500">
+            <p className="mt-8 text-sm font-light text-neutral-500">
               If you’re ready to replace operational friction with engineered
               workflows, this is for you.
             </p>
           </div>
 
           {/* NOT FOR */}
-          <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl md:p-12">
-            <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
+          <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 md:p-10 backdrop-blur-xl">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
               Who we’re not for
             </p>
 
@@ -88,7 +89,7 @@ export default function WhoWeWorkWith() {
                     <X className="h-4 w-4 text-neutral-400" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-light text-neutral-100">
+                    <h3 className="text-base font-light text-neutral-100">
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm font-light leading-relaxed text-neutral-400">
@@ -99,7 +100,7 @@ export default function WhoWeWorkWith() {
               ))}
             </div>
 
-            <p className="mt-10 text-sm font-light text-neutral-500">
+            <p className="mt-8 text-sm font-light text-neutral-500">
               If you need a quick template or a low-commitment build, we’ll
               recommend a better fit.
             </p>
