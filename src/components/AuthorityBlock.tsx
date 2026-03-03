@@ -119,21 +119,22 @@ export default function AuthorityBlock() {
           ))}
         </div>
 
-        {/* Tech stack marquee */}
+        {/* ✅ Tech stack marquee (logos + names) */}
         <div className="mt-10">
           <TechStackMarquee
             items={[
-              "React",
-              "TypeScript",
-              "APIs",
-              "Automation",
-              "Vercel",
-              "Resend",
-              "Swift",
-              "Python",
-              "Dashboards",
-              "Integrations",
+              { name: "React", src: "/tech/react.svg" },
+              { name: "TypeScript", src: "/tech/typescript.svg" },
+              { name: "APIs", src: "/tech/api.svg" },
+              { name: "Automation", src: "/tech/automation.svg" },
+              { name: "Vercel", src: "/tech/vercel.svg", invertOnDark: true },
+              { name: "Resend", src: "/tech/resend.svg" },
+              { name: "Swift", src: "/tech/swift.svg" },
+              { name: "Python", src: "/tech/python.svg" },
+              { name: "Dashboards", src: "/tech/dashboard.svg" },
+              { name: "Integrations", src: "/tech/integrations.svg" },
             ]}
+            speedSeconds={26}
           />
         </div>
       </div>
