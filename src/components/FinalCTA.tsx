@@ -17,13 +17,16 @@ export default function FinalCTA({ onOpenBooking }: FinalCTAProps) {
 
       <div className="relative mx-auto max-w-5xl text-center">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
-          Build the system.
-          <br />
-          Own the outcome.
+          Ready to fix your workflow?
         </h2>
 
         <p className="mt-6 text-base sm:text-lg font-light text-neutral-400">
-          Let’s design infrastructure that scales with you — not against you.
+          We’ll review your current process, find what’s slowing you down,
+          and design a system that removes the friction.
+        </p>
+
+        <p className="mt-4 text-sm font-light text-neutral-500">
+          Fewer no-shows. Faster replies. Less manual work.
         </p>
 
         <div className="mt-10">
@@ -40,7 +43,7 @@ export default function FinalCTA({ onOpenBooking }: FinalCTAProps) {
               "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
             ].join(" ")}
           >
-            Request a Systems Assessment
+            Book a strategy call
           </button>
         </div>
       </div>

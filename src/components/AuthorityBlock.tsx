@@ -14,41 +14,43 @@ type Signal = {
 };
 
 export default function AuthorityBlock() {
+  // ✅ Simplified: plain-language pillars, still “premium”
   const pillars: Pillar[] = [
     {
-      title: "Software Systems",
-      desc: "Custom apps and internal tools designed around your workflows — not generic templates.",
+      title: "Custom software",
+      desc: "Tools built around how you work — so your team isn’t fighting the process every day.",
       icon: Code,
     },
     {
-      title: "Automation Engineering",
-      desc: "Workflow automation that reduces manual steps, eliminates handoffs, and prevents errors.",
+      title: "Automation that saves time",
+      desc: "We remove busywork: forms, follow-ups, reminders, handoffs, and approvals.",
       icon: Workflow,
     },
     {
-      title: "Infrastructure + Deployments",
-      desc: "Production-grade architecture, deployments, and monitoring for long-term reliability.",
+      title: "Reliable setup",
+      desc: "Your system stays stable as you grow — less breaking, less babysitting, fewer surprises.",
       icon: Server,
     },
     {
-      title: "Security-minded by default",
-      desc: "Least-privilege access patterns, safe data handling, and hardened delivery workflows.",
+      title: "Data handled safely",
+      desc: "Clean access control and safe handling of customer info from day one.",
       icon: Shield,
     },
   ];
 
+  // ✅ Simplified: outcomes + trust without jargon
   const signals: Signal[] = [
     {
-      title: "Designed for operators",
-      desc: "We build systems that reduce friction inside real businesses — scheduling, ops, and back office.",
+      title: "Built for real businesses",
+      desc: "Less manual work. Faster replies. Cleaner handoffs. Fewer missed leads.",
     },
     {
-      title: "Durable over trendy",
-      desc: "We prioritize maintainability, clarity, and long-term ownership over novelty.",
+      title: "Made to keep working",
+      desc: "We build it so you can run it daily — not something that falls apart after launch.",
     },
     {
-      title: "Proof available on request",
-      desc: "Select outcomes and references can be shared after an initial fit check.",
+      title: "Examples available",
+      desc: "We can share relevant examples after a quick fit check.",
     },
   ];
 
@@ -61,14 +63,14 @@ export default function AuthorityBlock() {
           </p>
 
           <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em]">
-            Infrastructure-first.
+            Built to run daily.
             <br />
-            Built to compound.
+            Built to scale.
           </h2>
 
           <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
-            We deliver systems that stay reliable under growth: software,
-            automation, and operational platforms.
+            We build software + automation that cuts busywork and keeps your
+            operation running clean as you grow.
           </p>
         </div>
 
@@ -119,7 +121,7 @@ export default function AuthorityBlock() {
           ))}
         </div>
 
-        {/* ✅ Tech stack marquee (logos + names) */}
+        {/* Tech stack marquee */}
         <div className="mt-10">
           <TechStackMarquee
             items={[

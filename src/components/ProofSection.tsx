@@ -2,29 +2,29 @@
 
 const engagements = [
   {
-    category: "Case Study",
-    title: "Service Business Ops Rebuild",
+    category: "Example",
+    title: "Operations cleanup + automation",
     description:
-      "Rebuilt intake, scheduling, reminders, and reporting into a unified operational backend.",
-    before: "Manual scheduling, missed follow-ups, duplicate admin entry.",
-    after: "Automated intake forms, calendar logic, reminders, and internal dashboard.",
+      "We cleaned up the intake and scheduling flow so staff stopped chasing people and doing the same work twice.",
+    before: "Manual scheduling, missed follow-ups, duplicate admin work.",
+    after: "Automated intake forms, booking rules, reminders, and a simple internal dashboard.",
     result:
-      "Reduced admin load, improved response speed, and stabilized weekly throughput.",
-    context: "Multi-location service operator",
+      "Less admin time, faster replies, and a smoother weekly schedule.",
+    context: "Multi-location service business",
   },
   {
-    category: "Platform Engineering",
-    title: "Custom Booking Infrastructure",
+    category: "Example",
+    title: "Booking system + payments",
     description:
-      "Designed and deployed a scalable booking system integrated with payments, calendar logic, and internal dashboards for real-time oversight.",
-    context: "Growth-stage service business",
+      "We built a booking flow that takes payments, applies scheduling rules, and gives the team a clear view of what’s coming up.",
+    context: "Growing service business",
   },
   {
-    category: "Systems Modernization",
-    title: "Legacy Stack Refactor",
+    category: "Example",
+    title: "Replace old tools that keep breaking",
     description:
-      "Re-architected brittle legacy tools into modular, maintainable systems built for long-term expansion and team scalability.",
-    context: "Digital operations team",
+      "We replaced messy, fragile tools with a cleaner setup the team can keep using and expanding.",
+    context: "Operations team",
   },
 ];
 
@@ -61,16 +61,15 @@ export default function ProofSection() {
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
-            Selected engagements
+            Results
           </p>
 
           <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
-            Systems that compound
+            What we’ve built
           </h2>
 
           <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
-            Real builds focused on durability, operational clarity, and stable
-            infrastructure.
+            Simple goal: less manual work, fewer no-shows, faster replies, and cleaner operations.
           </p>
         </div>
 

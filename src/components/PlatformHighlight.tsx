@@ -1,3 +1,4 @@
+// src/components/PlatformHighlight.tsx
 import { Check } from "lucide-react";
 
 type PlatformHighlightProps = {
@@ -5,10 +6,10 @@ type PlatformHighlightProps = {
 };
 
 const features = [
-  "Automated workflows",
-  "Real-time availability",
-  "Payment processing",
-  "Analytics dashboard",
+  "Online booking that feels premium",
+  "Automatic confirmations + reminders",
+  "Payments + deposits (if needed)",
+  "Owner dashboard to see everything",
 ];
 
 export default function PlatformHighlight({
@@ -20,16 +21,20 @@ export default function PlatformHighlight({
         {/* Left: content */}
         <div>
           <p className="text-[11px] uppercase tracking-[0.22em] text-brand-400">
-            Flagship product
+            Example system
           </p>
 
           <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] leading-[1.02] text-neutral-100">
-            Apex Booking System
+            Booking is just one piece.
           </h2>
 
           <p className="mt-5 max-w-xl text-base sm:text-lg font-light leading-relaxed text-neutral-400">
-            Scheduling infrastructure built to reduce missed appointments,
-            tighten operations, and deliver a premium booking experience end-to-end.
+            This is one example of what we build: a clean booking flow that
+            reduces missed appointments and keeps your schedule full.{" "}
+            <span className="text-neutral-300">
+              The real value is the full operation behind it — intake,
+              follow-ups, routing, handoffs, and dashboards.
+            </span>
           </p>
 
           <ul className="mt-8 space-y-4">
@@ -43,13 +48,18 @@ export default function PlatformHighlight({
             ))}
           </ul>
 
+          <p className="mt-7 max-w-xl text-sm font-light leading-relaxed text-neutral-500">
+            If you want fewer no-shows, faster replies, and less manual work,
+            we’ll map your workflow and build the system around it.
+          </p>
+
           <div className="mt-8">
             <button
               type="button"
               onClick={onOpenBooking}
               className="group inline-flex items-center gap-2 text-sm font-medium text-brand-400 hover:text-brand-500 transition-colors duration-500 focus-visible:ring-2 focus-visible:ring-brand-400 rounded-md px-2 py-2 -ml-2"
             >
-              Experience it yourself
+              Talk through your workflow
               <span className="transition-transform duration-500 group-hover:translate-x-0.5">
                 →
               </span>
@@ -70,7 +80,7 @@ export default function PlatformHighlight({
 
               <div className="flex-1 px-4">
                 <div className="mx-auto max-w-sm rounded-full border border-neutral-800 bg-neutral-950 px-4 py-1.5 text-xs text-neutral-400">
-                  apexbooking.com/dashboard
+                  dashboard
                 </div>
               </div>
 
@@ -81,21 +91,25 @@ export default function PlatformHighlight({
             <div className="pt-6">
               <div className="flex items-start justify-between gap-8">
                 <div>
-                  <p className="text-sm text-neutral-400">Dashboard</p>
+                  <p className="text-sm text-neutral-400">Today</p>
                   <h3 className="mt-2 text-2xl font-extralight text-neutral-100">
-                    Upcoming Appointments
+                    Upcoming appointments
                   </h3>
                 </div>
 
                 <div className="hidden sm:block rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3">
-                  <p className="text-xs text-neutral-500">Today</p>
-                  <p className="mt-1 text-sm text-neutral-200">Wed • 9:12 AM</p>
+                  <p className="text-xs text-neutral-500">Status</p>
+                  <p className="mt-1 text-sm text-neutral-200">On track</p>
                 </div>
               </div>
 
               <div className="mt-8 space-y-3">
                 <AppointmentRow time="9:00 AM" name="Sarah Johnson" initials="SJ" />
-                <AppointmentRow time="11:30 AM" name="Michael Chen" initials="MC" />
+                <AppointmentRow
+                  time="11:30 AM"
+                  name="Michael Chen"
+                  initials="MC"
+                />
                 <AppointmentRow time="2:00 PM" name="Emma Davis" initials="ED" />
               </div>
 

@@ -2,33 +2,34 @@
 import { Check, X } from "lucide-react";
 
 export default function WhoWeWorkWith() {
+  // ✅ Simplified language: obvious, human, value-forward
   const goodFit = [
     {
-      title: "Operators scaling real operations",
-      desc: "You have a working business, growing demand, and systems starting to break under load.",
+      title: "Businesses that are busy (and growing)",
+      desc: "You’re getting more customers, but the admin work is piling up and things are starting to slip.",
     },
     {
-      title: "Teams tired of duct-taped workflows",
-      desc: "Manual coordination, scattered tools, and inconsistent processes are costing time and money.",
+      title: "Teams stuck doing everything manually",
+      desc: "Too many texts, spreadsheets, DMs, and “who’s handling this?” moments.",
     },
     {
-      title: "Businesses ready to invest in infrastructure",
-      desc: "You want durable systems that compound — not quick fixes that collapse in 90 days.",
+      title: "Owners ready to fix the system for real",
+      desc: "You want a setup that keeps working long-term — not another quick patch.",
     },
   ];
 
   const notFor = [
     {
-      title: "One-off landing page builds",
-      desc: "If the goal is only “a website”, we’re not the right partner.",
+      title: "Just a quick website",
+      desc: "If you only need a simple page and nothing else, we’re not the best fit.",
     },
     {
-      title: "Low-budget redesign projects",
-      desc: "We focus on engineered systems. Serious outcomes require serious investment.",
+      title: "Lowest-price shopping",
+      desc: "We build serious systems. That means real planning, real work, and real results.",
     },
     {
-      title: "Template-based solutions",
-      desc: "We don’t sell themes. We build infrastructure tailored to your operations.",
+      title: "Templates and “copy/paste” builds",
+      desc: "We don’t sell themes. We build around your workflow and how your business actually runs.",
     },
   ];
 
@@ -40,8 +41,8 @@ export default function WhoWeWorkWith() {
             Fit matters.
           </h2>
           <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
-            We work with operators who want durable systems — the kind that keep
-            working as you grow.
+            We’re for businesses that want fewer manual steps and a cleaner way
+            to run day-to-day operations.
           </p>
         </div>
 
@@ -56,7 +57,10 @@ export default function WhoWeWorkWith() {
               {goodFit.map((item) => (
                 <div key={item.title} className="flex gap-4">
                   <div className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950">
-                    <Check className="h-4 w-4 text-[#3F6E8F]" aria-hidden="true" />
+                    <Check
+                      className="h-4 w-4 text-[#3F6E8F]"
+                      aria-hidden="true"
+                    />
                   </div>
                   <div>
                     <h3 className="text-base font-light text-neutral-100">
@@ -71,8 +75,7 @@ export default function WhoWeWorkWith() {
             </div>
 
             <p className="mt-8 text-sm font-light text-neutral-500">
-              If you’re ready to replace operational friction with engineered
-              workflows, this is for you.
+              If you want less chaos and more control, this is a good fit.
             </p>
           </div>
 
@@ -86,7 +89,10 @@ export default function WhoWeWorkWith() {
               {notFor.map((item) => (
                 <div key={item.title} className="flex gap-4">
                   <div className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950">
-                    <X className="h-4 w-4 text-neutral-400" aria-hidden="true" />
+                    <X
+                      className="h-4 w-4 text-neutral-400"
+                      aria-hidden="true"
+                    />
                   </div>
                   <div>
                     <h3 className="text-base font-light text-neutral-100">
@@ -101,8 +107,8 @@ export default function WhoWeWorkWith() {
             </div>
 
             <p className="mt-8 text-sm font-light text-neutral-500">
-              If you need a quick template or a low-commitment build, we’ll
-              recommend a better fit.
+              If you need something quick and cheap, we’ll point you to a better
+              option.
             </p>
           </div>
         </div>

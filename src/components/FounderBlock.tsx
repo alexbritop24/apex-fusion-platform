@@ -5,17 +5,17 @@ export default function FounderBlock() {
   const points = [
     {
       title: "Built to last",
-      desc: "Clean systems you can own, extend, and rely on — not fragile quick fixes.",
+      desc: "We build simple, solid systems you can rely on — not quick fixes that break later.",
       icon: ShieldCheck,
     },
     {
-      title: "Ops-first",
-      desc: "We start with the workflow: intake, scheduling, follow-ups, fulfillment, reporting.",
+      title: "Start with the real workflow",
+      desc: "We map how your business runs: leads, booking, follow-ups, handoffs, and admin work.",
       icon: Wrench,
     },
     {
-      title: "Product-level execution",
-      desc: "Clear architecture, disciplined delivery, and stable releases.",
+      title: "Clean delivery",
+      desc: "Clear plan, fast execution, and a system your team can actually use every day.",
       icon: Layers,
     },
   ];
@@ -33,26 +33,26 @@ export default function FounderBlock() {
             <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100 leading-[1.05]">
               Built by engineers.
               <br />
-              Designed for operators.
+              Built for real businesses.
             </h2>
 
-            {/* Simplified core message */}
+            {/* ✅ SIMPLIFIED: outcomes + broad automation (not just booking) */}
             <p className="mt-6 text-base sm:text-lg font-light text-neutral-400 leading-relaxed max-w-xl">
-              We build software and automation that replaces manual work —
-              booking, workflows, integrations, and internal dashboards —
-              so you can scale without chaos.
+              We help your business run smoother by building systems that do the
+              busy work: capture leads, book jobs, send texts, follow up, route
+              requests, and keep everything organized.
             </p>
 
             <p className="mt-5 text-sm font-light text-neutral-500 leading-relaxed max-w-xl">
-              If you’re ready to invest in a durable system (not a template),
-              we’ll be a strong fit.
+              The goal is simple: more booked appointments, faster replies, fewer
+              mistakes, and less time wasted.
             </p>
           </div>
 
           {/* Right */}
           <div className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 md:p-10 backdrop-blur-xl">
             <p className="text-[11px] uppercase tracking-[0.22em] text-neutral-500">
-              Principles
+              What you get
             </p>
 
             <div className="mt-8 space-y-7">
@@ -81,7 +81,7 @@ export default function FounderBlock() {
 
             <div className="mt-9 rounded-2xl border border-neutral-800 bg-neutral-950 px-6 py-5">
               <p className="text-sm font-light text-neutral-300">
-                Fast fit check → clear plan → clean build → stable delivery.
+                Quick fit check → clear plan → build → launch.
               </p>
             </div>
           </div>

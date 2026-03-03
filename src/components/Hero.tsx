@@ -45,19 +45,21 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
         </p>
 
         <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.04em] leading-[1.02]">
-          Replace manual chaos
+          Replace manual work
           <br className="hidden sm:block" />
-          with engineered systems.
+          with a system that runs itself.
         </h1>
 
-        {/* ✅ SIMPLIFIED COPY */}
         <p className="mx-auto mt-8 max-w-3xl text-base sm:text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
-          We build software and automation that replaces manual work —
-          so your business runs clean, fast, and without chaos.
+          We build simple software and automation that handles{" "}
+          <span className="text-neutral-200">
+            leads, booking, follow-ups, payments, and handoffs
+          </span>{" "}
+          — so your team stops chasing and starts executing.
         </p>
 
         <p className="mx-auto mt-5 max-w-2xl text-sm text-neutral-500">
-          If you're ready to invest in a real system (not a patch), we’ll map it and build it.
+          One clear build. Fewer mistakes. Faster replies. More money collected.
         </p>
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
@@ -91,12 +93,12 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
               "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
             ].join(" ")}
           >
-            See what we build
+            See examples
           </button>
         </div>
 
         <p className="mt-10 text-xs text-neutral-600 tracking-wide">
-          Custom software • Automation • Booking systems
+          Operations systems • Automation • Booking + follow-ups
         </p>
       </div>
     </section>

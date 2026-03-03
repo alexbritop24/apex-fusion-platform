@@ -3,23 +3,27 @@ import { Code, Zap, Layers, Database } from "lucide-react";
 
 const capabilities = [
   {
-    title: "Software Systems",
-    description: "Robust custom software to run your business.",
+    title: "Custom Software",
+    description:
+      "We build the tools your team actually needs — client portals, dashboards, internal systems, and admin panels.",
     Icon: Code,
   },
   {
-    title: "Automation Workflows",
-    description: "Intelligent automation that saves time and eliminates errors.",
+    title: "Automation",
+    description:
+      "We remove repetitive work — auto follow-ups, reminders, task routing, forms → spreadsheets/CRM, and clean handoffs.",
     Icon: Zap,
   },
   {
-    title: "Digital Products",
-    description: "Apps and tools designed for lasting impact.",
+    title: "AI + Smart Tools",
+    description:
+      "We add helpful AI where it makes sense — faster replies, better intake, smarter scheduling, and cleaner ops.",
     Icon: Layers,
   },
   {
-    title: "Infrastructure",
-    description: "Backend architecture that powers growth.",
+    title: "Reliable Setup",
+    description:
+      "We set it up so it runs every day — integrations, tracking, permissions, and a system you can keep using.",
     Icon: Database,
   },
 ];
@@ -30,12 +34,16 @@ export default function CapabilitiesGrid() {
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="text-[11px] uppercase tracking-[0.22em] text-brand-400">
-            Capabilities
+            What we do
           </p>
 
           <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
-            What we build
+            We build systems that save time.
           </h2>
+
+          <p className="mx-auto mt-5 max-w-3xl text-base sm:text-lg font-light text-neutral-400">
+            Less manual work. Fewer mistakes. Faster follow-ups. Clearer operations.
+          </p>
         </div>
 
         <div className="mt-14 rounded-3xl border border-neutral-800 bg-neutral-800/60 overflow-hidden">
@@ -51,7 +59,7 @@ export default function CapabilitiesGrid() {
                   {title}
                 </h3>
 
-                <p className="mt-3 text-sm sm:text-base font-light text-neutral-400 max-w-md">
+                <p className="mt-3 text-sm sm:text-base font-light text-neutral-400 max-w-md leading-relaxed">
                   {description}
                 </p>
               </div>

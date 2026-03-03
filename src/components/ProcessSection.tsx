@@ -16,20 +16,20 @@ export default function ProcessSection({ onOpenBooking }: ProcessSectionProps) {
   const steps: Step[] = [
     {
       step: "01",
-      title: "Systems Assessment",
-      desc: "We map your operations, identify bottlenecks, and define what must be automated, rebuilt, or replaced to scale reliably.",
+      title: "Quick Fit + Game Plan",
+      desc: "We learn how your business runs today, find what’s wasting time, and map the exact system you need.",
       icon: ClipboardList,
     },
     {
       step: "02",
-      title: "Architecture + Build",
-      desc: "We design the workflow and build durable software: booking, automation, dashboards, integrations, and the infrastructure behind it.",
+      title: "Build + Connect Everything",
+      desc: "We build the setup that handles your workflow — forms, booking, follow-ups, and internal handoffs — so it runs on its own.",
       icon: Cpu,
     },
     {
       step: "03",
-      title: "Launch + Hardening",
-      desc: "We deploy, instrument, and harden the system so it keeps performing under real load — with clear ownership and next steps.",
+      title: "Launch + Keep It Running",
+      desc: "We turn it on, test it with real usage, fix the weak spots, and make sure you can rely on it day-to-day.",
       icon: Rocket,
     },
   ];
@@ -43,12 +43,12 @@ export default function ProcessSection({ onOpenBooking }: ProcessSectionProps) {
           </p>
 
           <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em]">
-            A disciplined build process.
+            Simple process. Real results.
           </h2>
 
           <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
-            You don’t need another tool. You need infrastructure that fits your
-            operation and keeps working as you grow.
+            The goal is simple: fewer missed leads, fewer no-shows, less manual work,
+            and cleaner execution.
           </p>
         </div>
 
