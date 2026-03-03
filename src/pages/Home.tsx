@@ -46,7 +46,7 @@ export default function Home() {
         <FounderBlock />
         <WhoWeWorkWith />
         <ProcessSection onOpenBooking={() => setBookingOpen(true)} />
-        <AuthorityBlock />
+        
         <PlatformHighlight onOpenBooking={() => setBookingOpen(true)} />
 
         {/* Anchor for "See what we build" */}

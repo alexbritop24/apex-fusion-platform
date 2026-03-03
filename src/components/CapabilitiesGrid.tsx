@@ -5,25 +5,25 @@ const capabilities = [
   {
     title: "Custom Software",
     description:
-      "We build the tools your team actually needs — client portals, dashboards, internal systems, and admin panels.",
+      "Client portals, dashboards, booking systems, and internal tools built around your real workflow — not templates.",
     Icon: Code,
   },
   {
     title: "Automation",
     description:
-      "We remove repetitive work — auto follow-ups, reminders, task routing, forms → spreadsheets/CRM, and clean handoffs.",
+      "Follow-ups, reminders, task routing, intake forms, and system handoffs that run automatically every day.",
     Icon: Zap,
   },
   {
-    title: "AI + Smart Tools",
+    title: "AI + Smart Systems",
     description:
-      "We add helpful AI where it makes sense — faster replies, better intake, smarter scheduling, and cleaner ops.",
+      "AI where it makes sense — faster replies, smarter intake, better scheduling, cleaner operations.",
     Icon: Layers,
   },
   {
-    title: "Reliable Setup",
+    title: "Built to Last",
     description:
-      "We set it up so it runs every day — integrations, tracking, permissions, and a system you can keep using.",
+      "Clear structure, clean integrations, and systems your team can actually maintain and grow with.",
     Icon: Database,
   },
 ];
@@ -34,15 +34,15 @@ export default function CapabilitiesGrid() {
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="text-[11px] uppercase tracking-[0.22em] text-brand-400">
-            What we do
+            What we build
           </p>
 
           <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
-            We build systems that save time.
+            Systems that remove friction.
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-base sm:text-lg font-light text-neutral-400">
-            Less manual work. Fewer mistakes. Faster follow-ups. Clearer operations.
+            Less manual work. Fewer mistakes. Faster replies. Clearer operations.
           </p>
         </div>
 
@@ -65,6 +65,13 @@ export default function CapabilitiesGrid() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* credibility reinforcement */}
+        <div className="mt-12 text-center">
+          <p className="text-sm font-light text-neutral-500">
+            Founder-led builds. Clear process. Durable systems.
+          </p>
         </div>
       </div>
     </section>
