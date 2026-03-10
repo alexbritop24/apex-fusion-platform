@@ -13,6 +13,7 @@ import WhoWeWorkWith from "../components/WhoWeWorkWith";
 import ProcessSection from "../components/ProcessSection";
 import FounderBlock from "../components/FounderBlock";
 import ExampleSystems from "../components/ExampleSystems";
+import ProblemsWeFix from "../components/ProblemsWeFix";
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -44,6 +45,8 @@ export default function Home() {
         <PlatformHighlight onOpenBooking={() => setBookingOpen(true)} />
 
         <ExampleSystems />
+
+        <ProblemsWeFix />
 
         <CapabilitiesGrid />
         <ProofSection />
