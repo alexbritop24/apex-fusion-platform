@@ -27,11 +27,15 @@ export default function Home() {
         onClose={() => setBookingOpen(false)}
       />
 
-      {/* ✅ FIX: mobile nav is h-16, desktop is h-24 */}
+      
       <main id="main" className="pt-16 md:pt-24">
         <Hero
           onPrimaryCTA={() => setBookingOpen(true)}
-          onSecondaryCTA={() => setBookingOpen(true)}
+          onSecondaryCTA={() =>
+            document
+              .getElementById("examples")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
         />
 
         <FounderBlock />

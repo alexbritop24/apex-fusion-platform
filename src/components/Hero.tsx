@@ -47,7 +47,7 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
         <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.04em] leading-[1.02]">
           Replace manual work
           <br className="hidden sm:block" />
-          with a system that runs itself.
+          with systems that run your business.
         </h1>
 
         <p className="mx-auto mt-8 max-w-3xl text-base sm:text-lg md:text-xl text-neutral-400 font-light leading-relaxed">

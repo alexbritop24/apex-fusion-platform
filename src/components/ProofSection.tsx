@@ -57,7 +57,10 @@ function isCaseStudy(e: Engagement): e is CaseStudyEngagement {
 
 export default function ProofSection() {
   return (
-    <section className="bg-neutral-950/30 px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
+    <section
+      id="examples"
+      className="bg-neutral-950/30 px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
