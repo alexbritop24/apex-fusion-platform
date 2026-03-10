@@ -1,4 +1,9 @@
-import { CalendarCheck2, MessageSquareText, Bot, LayoutDashboard } from "lucide-react";
+import {
+  CalendarCheck2,
+  MessageSquareText,
+  Bot,
+  LayoutDashboard,
+} from "lucide-react";
 
 const systems = [
   {
@@ -10,7 +15,7 @@ const systems = [
   {
     title: "Lead follow-up system",
     description:
-      "Capture leads, reply faster, send follow-ups automatically, and stop losing people in DMs.",
+      "Capture leads, reply faster, send follow-ups automatically, and stop losing people.",
     icon: MessageSquareText,
   },
   {
@@ -22,7 +27,7 @@ const systems = [
   {
     title: "Operations dashboard",
     description:
-      "See bookings, team activity, lead status, and day-to-day performance in one place.",
+      "See bookings, team activity, lead status, and performance in one place.",
     icon: LayoutDashboard,
   },
 ];
@@ -41,8 +46,7 @@ export default function ExampleSystems() {
           </h2>
 
           <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
-            Every business is different, but these are common systems we build
-            to remove manual work and keep things moving.
+            These are common systems we build to remove manual work and keep businesses running smoothly.
           </p>
         </div>
 

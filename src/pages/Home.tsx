@@ -28,7 +28,6 @@ export default function Home() {
         onClose={() => setBookingOpen(false)}
       />
 
-      
       <main id="main" className="pt-16 md:pt-24">
         <Hero
           onPrimaryCTA={() => setBookingOpen(true)}
@@ -43,6 +42,9 @@ export default function Home() {
         <WhoWeWorkWith />
         <ProcessSection onOpenBooking={() => setBookingOpen(true)} />
         <PlatformHighlight onOpenBooking={() => setBookingOpen(true)} />
+
+        <ExampleSystems />
+
         <CapabilitiesGrid />
         <ProofSection />
         <FinalCTA onOpenBooking={() => setBookingOpen(true)} />
