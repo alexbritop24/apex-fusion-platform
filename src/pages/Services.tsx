@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Check,
   LayoutTemplate,
+  Bot,
 } from "lucide-react";
 
 type ServiceCard = {
@@ -26,62 +27,74 @@ export default function Services() {
 
   const services: ServiceCard[] = [
     {
-      title: "Custom Software Systems",
+      title: "Client Systems",
       description:
-        "Software built around your real operations — reliable, clear, and designed to last.",
+        "Systems that help you capture leads, book work, follow up faster, and keep customers moving.",
       bullets: [
-        "Internal tools & operator dashboards",
-        "Client portals & admin platforms",
-        "Data modeling and system architecture",
-        "Production-grade React + API builds",
-      ],
-      icon: <Code2 className="h-6 w-6" aria-hidden="true" />,
-    },
-    {
-      title: "Automation & Workflows",
-      description:
-        "Automation that removes manual steps and keeps execution predictable.",
-      bullets: [
-        "Lead → intake → fulfillment pipelines",
-        "Notifications, routing, and approvals",
-        "AI-assisted workflows where useful",
-        "Audit trails & monitoring",
+        "Lead capture forms and intake flows",
+        "Booking, reminders, and confirmations",
+        "Payments, deposits, and status updates",
+        "Follow-ups that run automatically",
       ],
       icon: <Workflow className="h-6 w-6" aria-hidden="true" />,
     },
     {
-      title: "Digital Infrastructure",
+      title: "Operations Systems",
       description:
-        "The backend foundations that support growth — APIs, data, environments, and deployments.",
+        "Internal systems that reduce manual work and help your team stay organized day to day.",
       bullets: [
-        "APIs, databases, auth, permissions",
-        "Cloud deployments & CI/CD pipelines",
-        "Performance, logging, error tracking",
-        "Security headers & best practices",
+        "Task routing and staff notifications",
+        "Approvals, handoffs, and internal steps",
+        "Simple dashboards and reporting",
+        "Cleaner day-to-day operations",
       ],
       icon: <Database className="h-6 w-6" aria-hidden="true" />,
     },
     {
-      title: "Systems Hardening",
+      title: "Custom Software",
       description:
-        "Stability upgrades for teams that can’t afford downtime or fragile tools.",
+        "Tools built around how your business actually works — not generic templates that force awkward workarounds.",
       bullets: [
-        "Refactors that reduce operational risk",
-        "Reliability & incident prevention",
-        "Access controls and least privilege",
-        "Performance budgets & guardrails",
+        "Internal tools and admin panels",
+        "Client portals and custom workflows",
+        "Business-specific dashboards",
+        "Systems built to match your process",
+      ],
+      icon: <Code2 className="h-6 w-6" aria-hidden="true" />,
+    },
+    {
+      title: "AI + Smart Automation",
+      description:
+        "Practical AI tools that save time, speed up replies, and make your workflow more efficient.",
+      bullets: [
+        "AI chat and smart reply tools",
+        "Faster intake and lead handling",
+        "Automated task support",
+        "Business tools with AI built in",
+      ],
+      icon: <Bot className="h-6 w-6" aria-hidden="true" />,
+    },
+    {
+      title: "Reliable Setup",
+      description:
+        "The behind-the-scenes setup that keeps everything running clean, stable, and secure.",
+      bullets: [
+        "Integrations between your tools",
+        "Permissions and account access",
+        "Tracking, logging, and reliability",
+        "Setup that can grow with your business",
       ],
       icon: <ShieldCheck className="h-6 w-6" aria-hidden="true" />,
     },
     {
-      title: "Website Design",
+      title: "Websites",
       description:
-        "High-end websites built for clarity, credibility, and conversion.",
+        "High-end websites built for clarity, trust, and conversion — with the right systems behind them.",
       bullets: [
-        "Modern marketing sites (Vite/React)",
-        "Clear information architecture",
-        "Performance, accessibility, SEO",
-        "Deployment + analytics setup",
+        "Modern marketing websites",
+        "Clear messaging and structure",
+        "Fast, responsive, accessible pages",
+        "Connected forms, booking, and analytics",
       ],
       icon: <LayoutTemplate className="h-6 w-6" aria-hidden="true" />,
     },
@@ -91,19 +104,21 @@ export default function Services() {
     <div className="min-h-screen bg-black text-[#f5f5f5]">
       <SEO
         title="Services — Apex Fusion Studios"
-        description="Custom software, automation systems, digital infrastructure, and high-end web experiences."
+        description="We build client systems, operations systems, custom software, AI tools, reliable setup, and websites that remove manual work."
         path="/services"
+        imagePath="/og.png"
       />
 
-      {/* ✅ IMPORTANT: wire navbar CTA */}
       <Navigation onOpenBooking={() => setBookingOpen(true)} />
 
-      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
+      <BookingModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+      />
 
-      {/* ✅ FIX: mobile nav is h-16, desktop nav is h-24 */}
       <main id="main" className="pt-16 md:pt-24">
         {/* HERO */}
-        <section className="relative overflow-hidden px-8 py-24 lg:px-16">
+        <section className="relative overflow-hidden px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full blur-3xl"
@@ -116,23 +131,28 @@ export default function Services() {
           />
 
           <div className="relative mx-auto max-w-6xl">
-            <p className="text-xs uppercase tracking-[0.22em] text-[#3F6E8F]">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
               Services
             </p>
 
-            <h1 className="mt-5 text-5xl font-extralight leading-[1.05] tracking-[-0.04em] md:text-6xl lg:text-7xl">
-              Systems built to work.
+            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight leading-[1.05] tracking-[-0.04em]">
+              We build systems that
               <br />
-              Built to last.
+              remove manual work.
             </h1>
 
-            {/* ✅ UPDATED (simpler) */}
-            <p className="mt-8 max-w-3xl text-lg font-light text-neutral-400 md:text-xl">
-              We build software, automation, and websites that remove manual work
-              — and stay reliable as you grow.
+            <p className="mt-6 max-w-3xl text-base sm:text-lg md:text-xl font-light text-neutral-400 leading-relaxed">
+              That can mean booking, follow-ups, handoffs, internal tools, AI
+              support, or a full workflow rebuild — whatever is slowing your
+              business down today.
             </p>
 
-            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <p className="mt-4 max-w-2xl text-sm font-light text-neutral-500 leading-relaxed">
+              The goal is simple: less chaos, faster replies, fewer mistakes,
+              and smoother execution.
+            </p>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
               <button
                 type="button"
                 onClick={() => setBookingOpen(true)}
@@ -152,45 +172,46 @@ export default function Services() {
                 href="#offer"
                 className="inline-flex items-center gap-2 text-sm text-neutral-400 transition-colors duration-500 hover:text-[#3F6E8F] focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
               >
-                Explore what we build <ArrowRight className="h-4 w-4" />
+                Explore services <ArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
         </section>
 
         {/* SERVICES GRID */}
-        <section id="offer" className="px-8 py-20 lg:px-16">
+        <section id="offer" className="px-6 md:px-8 lg:px-16 py-16 md:py-20">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-4xl font-extralight tracking-[-0.04em] md:text-5xl lg:text-6xl">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em]">
                 What we build
               </h2>
-              <p className="mt-6 text-lg font-light text-neutral-400">
-                Systems designed to remove friction and keep operations clean.
+              <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
+                Different businesses need different systems. These are the main
+                ways we help.
               </p>
             </div>
 
-            <div className="mt-16 grid gap-6 md:grid-cols-2">
+            <div className="mt-14 grid gap-6 md:grid-cols-2">
               {services.map((s) => (
                 <div
                   key={s.title}
-                  className="group rounded-2xl border border-neutral-800/60 bg-black/30 p-10 backdrop-blur-xl transition-all duration-500 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
+                  className="group rounded-2xl border border-neutral-800/60 bg-black/30 p-8 md:p-10 backdrop-blur-xl transition-all duration-500 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
                 >
                   <div>
                     <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
                       {s.icon}
                     </div>
 
-                    <h3 className="mt-6 text-2xl font-light text-neutral-100 transition-colors duration-500 group-hover:text-[#3F6E8F]">
+                    <h3 className="mt-5 text-xl md:text-2xl font-light text-neutral-100 transition-colors duration-500 group-hover:text-[#3F6E8F]">
                       {s.title}
                     </h3>
 
-                    <p className="mt-4 text-base font-light text-neutral-400">
+                    <p className="mt-4 text-sm sm:text-base font-light leading-relaxed text-neutral-400">
                       {s.description}
                     </p>
                   </div>
 
-                  <ul className="mt-8 space-y-3">
+                  <ul className="mt-7 space-y-3">
                     {s.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-3">
                         <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/5">
@@ -206,7 +227,7 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  <div className="mt-10">
+                  <div className="mt-8">
                     <button
                       type="button"
                       onClick={() => setBookingOpen(true)}
@@ -222,15 +243,15 @@ export default function Services() {
         </section>
 
         {/* CTA */}
-        <section className="px-8 py-24 lg:px-16">
+        <section className="px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
           <div className="mx-auto max-w-6xl rounded-3xl border border-neutral-800/60 bg-black/30 p-10 text-center backdrop-blur-xl md:p-14">
             <h2 className="text-3xl font-extralight tracking-[-0.04em] md:text-4xl lg:text-5xl">
-              Ready to replace manual work?
+              Not sure what system you need yet?
             </h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-lg font-light text-neutral-400">
-              We’ll review your workflow, confirm fit, and outline the fastest
-              path to a stable system.
+            <p className="mx-auto mt-6 max-w-3xl text-base sm:text-lg font-light text-neutral-400">
+              We’ll look at your workflow, find what’s slowing things down, and
+              show you the fastest place to start.
             </p>
 
             <div className="mt-10 flex justify-center">
