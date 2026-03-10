@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import WhoWeWorkWith from "../components/WhoWeWorkWith";
 import ProcessSection from "../components/ProcessSection";
 import FounderBlock from "../components/FounderBlock";
+import ExampleSystems from "../components/ExampleSystems";
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);

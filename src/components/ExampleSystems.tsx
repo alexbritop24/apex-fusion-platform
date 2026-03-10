@@ -1,0 +1,76 @@
+import { CalendarCheck2, MessageSquareText, Bot, LayoutDashboard } from "lucide-react";
+
+const systems = [
+  {
+    title: "Booking + reminder system",
+    description:
+      "Online booking, confirmations, reminders, deposits, and fewer no-shows.",
+    icon: CalendarCheck2,
+  },
+  {
+    title: "Lead follow-up system",
+    description:
+      "Capture leads, reply faster, send follow-ups automatically, and stop losing people in DMs.",
+    icon: MessageSquareText,
+  },
+  {
+    title: "AI response assistant",
+    description:
+      "Answer common questions, qualify leads, and help your team respond faster.",
+    icon: Bot,
+  },
+  {
+    title: "Operations dashboard",
+    description:
+      "See bookings, team activity, lead status, and day-to-day performance in one place.",
+    icon: LayoutDashboard,
+  },
+];
+
+export default function ExampleSystems() {
+  return (
+    <section className="px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24 bg-neutral-950/30">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
+            Example systems
+          </p>
+
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
+            What this can look like
+          </h2>
+
+          <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
+            Every business is different, but these are common systems we build
+            to remove manual work and keep things moving.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {systems.map((system) => {
+            const Icon = system.icon;
+
+            return (
+              <div
+                key={system.title}
+                className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl transition-all duration-500 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
+              >
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+
+                <h3 className="mt-5 text-xl font-light text-neutral-100">
+                  {system.title}
+                </h3>
+
+                <p className="mt-3 text-sm font-light leading-relaxed text-neutral-400">
+                  {system.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
