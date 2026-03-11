@@ -1,5 +1,5 @@
 // src/components/ProblemsWeFix.tsx
-import { TriangleAlert } from "lucide-react";
+
 
 const problems = [
   {
