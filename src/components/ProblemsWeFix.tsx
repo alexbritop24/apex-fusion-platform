@@ -1,5 +1,4 @@
-// src/components/ProblemsWeFix.tsx
-
+import { AlertTriangle } from "lucide-react";
 
 const problems = [
   {
@@ -30,7 +29,7 @@ export default function ProblemsWeFix() {
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
-            Common problems
+            COMMON PROBLEMS
           </p>
 
           <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
@@ -47,12 +46,10 @@ export default function ProblemsWeFix() {
           {problems.map((p) => (
             <div
               key={p.title}
-              className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
+              className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl transition-all duration-500 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
             >
-              <div className="inline-flex h-12 items-center rounded-full border border-[#3F6E8F]/30 bg-[#3F6E8F]/10 px-4">
-              <span className="text-sm font-semibold tracking-wide text-[#7FB2D1]">
-                        ISSUE
-              </span>
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
+                <AlertTriangle className="h-5 w-5" aria-hidden="true" />
               </div>
 
               <h3 className="mt-5 text-xl font-light text-neutral-100">
