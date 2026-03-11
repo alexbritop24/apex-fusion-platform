@@ -1,4 +1,5 @@
-import { AlertCircle } from "lucide-react";
+// src/components/ProblemsWeFix.tsx
+import { TriangleAlert } from "lucide-react";
 
 const problems = [
   {
@@ -37,8 +38,8 @@ export default function ProblemsWeFix() {
           </h2>
 
           <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
-            Most businesses don’t need more tools.  
-            They need fewer manual steps and cleaner systems.
+            Most businesses don’t need more tools. They need fewer manual steps
+            and cleaner systems.
           </p>
         </div>
 
@@ -46,10 +47,14 @@ export default function ProblemsWeFix() {
           {problems.map((p) => (
             <div
               key={p.title}
-              className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl transition-all duration-500 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
+              className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
             >
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
-                <AlertCircle className="h-5 w-5 text-[#3F6E8F]" strokeWidth={1.5} />
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-950">
+                <TriangleAlert
+                  className="h-5 w-5 text-[#3F6E8F]"
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
               </div>
 
               <h3 className="mt-5 text-xl font-light text-neutral-100">

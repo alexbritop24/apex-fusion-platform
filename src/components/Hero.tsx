@@ -62,6 +62,11 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
           One clear build. Fewer mistakes. Faster replies. More money collected.
         </p>
 
+        <p className="mx-auto mt-4 max-w-3xl text-xs sm:text-sm text-neutral-600">
+          Built for growing service businesses — including med spas, home services,
+          and teams scaling past manual workflows.
+        </p>
+
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
           <button
             type="button"
