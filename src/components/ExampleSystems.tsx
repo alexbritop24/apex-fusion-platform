@@ -59,8 +59,8 @@ export default function ExampleSystems() {
                 key={system.title}
                 className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl transition-all duration-500 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
               >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[#3F6E8F]/30 bg-[#3F6E8F]/10">
+                  <Icon className="h-6 w-6 text-[#5B8FB0]" strokeWidth={2.1} aria-hidden="true" />
                 </div>
 
                 <h3 className="mt-5 text-xl font-light text-neutral-100">
