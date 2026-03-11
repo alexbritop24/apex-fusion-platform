@@ -49,7 +49,7 @@ export default function ProblemsWeFix() {
               className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl transition-all duration-500 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
             >
               <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-950 text-[#3F6E8F]">
-                <AlertCircle className="h-5 w-5" />
+                <AlertCircle className="h-5 w-5 text-[#3F6E8F]" strokeWidth={1.5} />
               </div>
 
               <h3 className="mt-5 text-xl font-light text-neutral-100">
