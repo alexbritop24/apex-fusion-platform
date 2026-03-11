@@ -49,13 +49,11 @@ export default function ProblemsWeFix() {
               key={p.title}
               className="rounded-3xl border border-neutral-800/60 bg-black/30 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-[#3F6E8F]/40 hover:bg-neutral-900/40"
             >
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[#3F6E8F]/30 bg-[#3F6E8F]/10">
-                <TriangleAlert
-                 className="h-6 w-6 text-[#5B8FB0]"
-                 strokeWidth={2.2}
-                 aria-hidden="true"
-                 />
-               </div>
+              <div className="inline-flex h-12 items-center rounded-full border border-[#3F6E8F]/30 bg-[#3F6E8F]/10 px-4">
+              <span className="text-sm font-semibold tracking-wide text-[#7FB2D1]">
+                        ISSUE
+              </span>
+              </div>
 
               <h3 className="mt-5 text-xl font-light text-neutral-100">
                 {p.title}
