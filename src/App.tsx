@@ -17,6 +17,9 @@ const CustomSoftwareDevelopment = lazy(
   () => import("./pages/CustomSoftwareDevelopment")
 );
 
+// ✅ NEW: med spa page
+const MedSpaSystems = lazy(() => import("./pages/MedSpaSystems"));
+
 // ✅ NEW: /book route page
 const Book = lazy(() => import("./pages/Book"));
 
@@ -48,6 +51,9 @@ function App() {
             path="/custom-software-development"
             element={<CustomSoftwareDevelopment />}
           />
+
+          {/* ✅ NEW: med spa systems page */}
+          <Route path="/med-spa-systems" element={<MedSpaSystems />} />
 
           {/* ✅ NEW: booking page */}
           <Route path="/book" element={<Book />} />

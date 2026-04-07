@@ -29,6 +29,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
     () => [
       { to: "/", label: "Home" },
       { to: "/services", label: "Services" },
+      { to: "/med-spa-systems", label: "Med Spas" },
       { to: "/systems-audit", label: "Free Systems Audit" },
       { to: "/about", label: "About" },
     ],
@@ -47,7 +48,6 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40">
-      {/* Skip link */}
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 rounded-lg bg-neutral-900 px-4 py-2 text-sm text-white focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
@@ -65,7 +65,6 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
         aria-label="Primary"
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-8 lg:px-16">
-          {/* Logo */}
           <Link to="/" className="inline-flex items-center">
             <img
               src={apexLogoIcon}
@@ -75,8 +74,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
             />
           </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden items-center gap-10 md:flex">
+          <div className="hidden items-center gap-8 md:flex">
             {navItems.map((item) => {
               const active = isActive(item.to);
 
@@ -86,7 +84,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
                   to={item.to}
                   aria-current={active ? "page" : undefined}
                   className={[
-                    "relative pb-2 text-sm font-light",
+                    "relative pb-2 text-sm font-light whitespace-nowrap",
                     "transition-colors duration-300",
                     active
                       ? "text-neutral-200"
@@ -106,9 +104,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
             })}
           </div>
 
-          {/* Right side */}
           <div className="flex items-center gap-3">
-            {/* Desktop CTA */}
             <button
               type="button"
               onClick={handleCTA}
@@ -126,7 +122,6 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
               Request a Systems Assessment
             </button>
 
-            {/* Mobile menu button */}
             <button
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
@@ -143,7 +138,6 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
           </div>
         </div>
 
-        {/* Mobile panel */}
         {mobileOpen && (
           <div className="md:hidden border-t border-neutral-800/50 bg-black/95 backdrop-blur-xl">
             <div className="px-6 py-10">
