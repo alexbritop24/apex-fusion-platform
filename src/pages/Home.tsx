@@ -14,6 +14,7 @@ import ProcessSection from "../components/ProcessSection";
 import FounderBlock from "../components/FounderBlock";
 import ExampleSystems from "../components/ExampleSystems";
 import ProblemsWeFix from "../components/ProblemsWeFix";
+import MedSpaShowcase from "../components/MedSpaShowcase";
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -45,6 +46,7 @@ export default function Home() {
         <PlatformHighlight onOpenBooking={() => setBookingOpen(true)} />
 
         <ExampleSystems />
+        <MedSpaShowcase />
 
         <ProblemsWeFix />
 
