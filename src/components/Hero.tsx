@@ -21,6 +21,15 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
 
   return (
     <section className="relative min-h-screen overflow-hidden px-6 md:px-8 lg:px-16 py-28 md:py-32">
+
+      {/* Med Spa Scene Background */}
+      <iframe
+        src="/medspa-scene.html"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 w-full h-full"
+        style={{ border: "none", opacity: 0.55 }}
+      />
+
       {/* subtle background glow */}
       <div
         aria-hidden="true"
