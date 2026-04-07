@@ -15,7 +15,7 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 100);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -55,136 +55,139 @@ export default function Navigation({ onOpenBooking }: NavigationProps) {
         Skip to content
       </a>
 
-      <nav
-        className={[
-          "h-24 transition-all duration-700",
-          scrolled
-            ? "bg-black/90 backdrop-blur-xl border-b border-neutral-800/50"
-            : "bg-transparent",
-        ].join(" ")}
-        aria-label="Primary"
-      >
-        <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-8 lg:px-16">
-          <Link to="/" className="inline-flex items-center">
-            <img
-              src={apexLogoIcon}
-              alt="Apex Fusion Studios"
-              className="h-16 w-auto"
-              loading="eager"
-            />
-          </Link>
+      <div className="mx-auto max-w-[1600px] px-4 pt-4 md:px-6 lg:px-10">
+        <nav
+          className={[
+            "relative rounded-[28px] border transition-all duration-700",
+            "backdrop-blur-2xl",
+            scrolled
+              ? "border-white/10 bg-black/70 shadow-[0_20px_80px_rgba(0,0,0,0.45)]"
+              : "border-white/8 bg-black/45 shadow-[0_10px_50px_rgba(0,0,0,0.28)]",
+          ].join(" ")}
+          aria-label="Primary"
+        >
+          <div className="mx-auto flex h-20 md:h-24 items-center justify-between px-5 md:px-8 lg:px-10">
+            <Link to="/" className="inline-flex items-center">
+              <img
+                src={apexLogoIcon}
+                alt="Apex Fusion Studios"
+                className="h-14 md:h-16 w-auto"
+                loading="eager"
+              />
+            </Link>
 
-          <div className="hidden items-center gap-8 md:flex">
-            {navItems.map((item) => {
-              const active = isActive(item.to);
+            <div className="hidden items-center gap-8 lg:gap-10 md:flex">
+              {navItems.map((item) => {
+                const active = isActive(item.to);
 
-              return (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  aria-current={active ? "page" : undefined}
-                  className={[
-                    "relative pb-2 text-sm font-light whitespace-nowrap",
-                    "transition-colors duration-300",
-                    active
-                      ? "text-neutral-200"
-                      : "text-neutral-500 hover:text-[#3F6E8F]",
-                    "focus-visible:ring-2 focus-visible:ring-[#3F6E8F] rounded",
-                    "after:absolute after:left-0 after:bottom-0 after:h-px after:w-full",
-                    "after:bg-[#3F6E8F]",
-                    "after:opacity-0 after:translate-y-1",
-                    "after:transition-all after:duration-500",
-                    "hover:after:opacity-60 hover:after:translate-y-0",
-                    active ? "after:opacity-80 after:translate-y-0" : "",
-                  ].join(" ")}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
+                return (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    aria-current={active ? "page" : undefined}
+                    className={[
+                      "relative pb-2 text-sm font-light whitespace-nowrap",
+                      "transition-colors duration-300",
+                      active
+                        ? "text-neutral-100"
+                        : "text-neutral-400 hover:text-white",
+                      "focus-visible:ring-2 focus-visible:ring-[#3F6E8F] rounded",
+                      "after:absolute after:left-0 after:bottom-0 after:h-px after:w-full",
+                      "after:bg-[#7FAED1]",
+                      "after:opacity-0 after:translate-y-1",
+                      "after:transition-all after:duration-500",
+                      "hover:after:opacity-60 hover:after:translate-y-0",
+                      active ? "after:opacity-80 after:translate-y-0" : "",
+                    ].join(" ")}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={handleCTA}
-              className={[
-                "hidden md:inline-flex",
-                "rounded-lg px-6 py-2.5 text-sm font-semibold text-white",
-                "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
-                "shadow-lg shadow-[#3F6E8F]/20",
-                "transition-all duration-500",
-                "hover:from-[#5B8FB0] hover:to-[#3F6E8F]",
-                "hover:shadow-[#5B8FB0]/25 hover:-translate-y-0.5",
-                "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
-              ].join(" ")}
-            >
-              Request a Systems Assessment
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={handleCTA}
+                className={[
+                  "hidden md:inline-flex",
+                  "rounded-2xl px-6 lg:px-7 py-3 text-sm font-semibold text-white",
+                  "bg-gradient-to-b from-[#8DB3D4] to-[#6E96B8]",
+                  "shadow-[0_10px_35px_rgba(63,110,143,0.22)]",
+                  "transition-all duration-500",
+                  "hover:from-[#A4C3DD] hover:to-[#7FAED1]",
+                  "hover:shadow-[0_12px_40px_rgba(91,143,176,0.28)] hover:-translate-y-0.5",
+                  "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
+                ].join(" ")}
+              >
+                Request a Systems Assessment
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setMobileOpen((v) => !v)}
-              className="md:hidden rounded-lg p-2 text-neutral-200 hover:text-white focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-            >
-              {mobileOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {mobileOpen && (
-          <div className="md:hidden border-t border-neutral-800/50 bg-black/95 backdrop-blur-xl">
-            <div className="px-6 py-10">
-              <div className="flex flex-col items-center text-center gap-4">
-                {navItems.map((item) => {
-                  const active = isActive(item.to);
-                  return (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      aria-current={active ? "page" : undefined}
-                      className={[
-                        "w-full max-w-xs rounded-lg px-3 py-3 text-base font-light tracking-wide",
-                        active
-                          ? "text-white"
-                          : "text-neutral-300 hover:text-white",
-                        "hover:bg-white/5 transition",
-                        "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
-                      ].join(" ")}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    handleCTA();
-                  }}
-                  className={[
-                    "w-full max-w-xs rounded-lg py-3 text-sm font-semibold text-white",
-                    "bg-gradient-to-b from-[#3F6E8F] to-[#2F5D7C]",
-                    "shadow-lg shadow-[#3F6E8F]/20",
-                    "transition-all duration-500",
-                    "hover:from-[#5B8FB0] hover:to-[#3F6E8F]",
-                    "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
-                  ].join(" ")}
-                >
-                  Request a Systems Assessment
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => setMobileOpen((v) => !v)}
+                className="md:hidden rounded-xl p-2.5 text-neutral-200 hover:text-white focus-visible:ring-2 focus-visible:ring-[#3F6E8F]"
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
+              >
+                {mobileOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
             </div>
           </div>
-        )}
-      </nav>
+
+          {mobileOpen && (
+            <div className="md:hidden border-t border-white/10 bg-black/80 backdrop-blur-2xl rounded-b-[28px]">
+              <div className="px-6 py-8">
+                <div className="flex flex-col items-center text-center gap-3">
+                  {navItems.map((item) => {
+                    const active = isActive(item.to);
+
+                    return (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        aria-current={active ? "page" : undefined}
+                        className={[
+                          "w-full max-w-xs rounded-xl px-4 py-3 text-base font-light tracking-wide transition",
+                          active
+                            ? "text-white bg-white/5"
+                            : "text-neutral-300 hover:text-white hover:bg-white/5",
+                          "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
+                        ].join(" ")}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      handleCTA();
+                    }}
+                    className={[
+                      "mt-2 w-full max-w-xs rounded-xl py-3 text-sm font-semibold text-white",
+                      "bg-gradient-to-b from-[#8DB3D4] to-[#6E96B8]",
+                      "shadow-[0_10px_35px_rgba(63,110,143,0.22)]",
+                      "transition-all duration-500",
+                      "hover:from-[#A4C3DD] hover:to-[#7FAED1]",
+                      "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
+                    ].join(" ")}
+                  >
+                    Request a Systems Assessment
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </nav>
+      </div>
     </header>
   );
 }
