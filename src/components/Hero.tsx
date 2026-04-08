@@ -8,6 +8,7 @@ type HeroProps = {
 
 export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
   const [scrollY, setScrollY] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY || 0);
@@ -16,62 +17,76 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
   const heroOpacity = useMemo(() => Math.max(0, 1 - scrollY / 700), [scrollY]);
   const heroTranslate = useMemo(() => scrollY * 0.15, [scrollY]);
+
+  // Separate slower parallax for the background image
+  const bgTranslate = useMemo(() => scrollY * 0.06, [scrollY]);
 
   return (
     <section className="relative min-h-screen overflow-hidden px-6 md:px-8 lg:px-16 py-28 md:py-32">
       {/* Background image */}
-      <div className="pointer-events-none absolute inset-0 z-0">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <img
           src="/system-core.PNG"
           alt=""
-          className="h-full w-full object-cover opacity-[0.18]"
+          className="h-full w-full object-cover opacity-[0.42] scale-110 transition-transform duration-300"
+          style={{
+            transform: `translateY(${bgTranslate}px) scale(1.08)`,
+          }}
         />
-        <div className="absolute inset-0 bg-black/75" />
+        <div className="absolute inset-0 bg-black/56" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_45%)]" />
       </div>
 
       {/* Glow accents */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full blur-3xl"
-        style={{ background: "#3F6E8F", opacity: 0.04 }}
+        style={{ background: "#3F6E8F", opacity: 0.05 }}
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-48 -right-48 h-[620px] w-[620px] rounded-full blur-3xl"
-        style={{ background: "#3F6E8F", opacity: 0.04 }}
+        style={{ background: "#3F6E8F", opacity: 0.05 }}
       />
 
       {/* Content */}
       <div
-        className="relative z-10 mx-auto max-w-6xl text-center"
+        className="relative z-10 mx-auto max-w-6xl text-center transition-all duration-1000 ease-out"
         style={{
-          opacity: heroOpacity,
-          transform: `translateY(${heroTranslate}px)`,
+          opacity: mounted ? heroOpacity : 0,
+          transform: mounted
+            ? `translateY(${heroTranslate}px)`
+            : "translateY(18px)",
         }}
       >
         <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
           For serious operators
         </p>
 
-        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.04em] leading-[1.02]">
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.04em] leading-[1.02] text-neutral-100">
           AI systems, automation,
           <br className="hidden sm:block" />
           and software that run your business.
         </h1>
 
-        <p className="mx-auto mt-8 max-w-3xl text-base sm:text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
+        <p className="mx-auto mt-8 max-w-3xl text-base sm:text-lg md:text-xl text-neutral-300 font-light leading-relaxed">
           We build the infrastructure behind modern service businesses — from AI
           call handling and booking flows to follow-ups, internal tools, and
           business automation.
         </p>
 
-        <p className="mx-auto mt-5 max-w-2xl text-sm text-neutral-500">
+        <p className="mx-auto mt-5 max-w-2xl text-sm text-neutral-400">
           Less manual work. Faster replies. Clearer operations. More closed work.
         </p>
 
-        <p className="mx-auto mt-4 max-w-3xl text-xs sm:text-sm text-neutral-600">
+        <p className="mx-auto mt-4 max-w-3xl text-xs sm:text-sm text-neutral-500">
           AI systems • automation • booking • internal tools
         </p>
 
@@ -99,7 +114,7 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
             className={[
               "w-full sm:w-auto",
               "rounded-full px-9 py-4 text-sm font-semibold",
-              "border border-neutral-800 bg-black/30 text-neutral-200",
+              "border border-neutral-700/80 bg-black/30 text-neutral-100",
               "backdrop-blur-xl",
               "transition-all duration-500",
               "hover:border-[#3F6E8F]/60 hover:text-white hover:-translate-y-1",
@@ -110,10 +125,13 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
           </button>
         </div>
 
-        <p className="mt-10 text-xs text-neutral-600 tracking-wide">
+        <p className="mt-10 text-xs text-neutral-500 tracking-wide">
           Built for service businesses that need better systems, not more chaos
         </p>
       </div>
+
+      {/* Subtle bottom fade */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-black" />
     </section>
   );
 }
