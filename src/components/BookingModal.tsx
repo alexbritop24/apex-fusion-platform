@@ -194,14 +194,14 @@ export default function BookingModal({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="flex min-h-full items-center justify-center px-4 py-8 md:px-6 md:py-10">
+      <div className="flex min-h-full items-center justify-center px-4 py-6 md:px-6 md:py-10">
         <div
           ref={panelRef}
           tabIndex={-1}
-          className="w-full max-w-3xl overflow-hidden rounded-3xl border border-neutral-800/60 bg-neutral-900/95 shadow-2xl shadow-black/60 outline-none"
+          className="flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl border border-neutral-800/60 bg-neutral-900/95 shadow-2xl shadow-black/60 outline-none"
         >
           {/* Header */}
-          <div className="border-b border-neutral-800/60 p-8 md:p-10">
+          <div className="border-b border-neutral-800/60 p-6 md:p-10">
             <div className="flex items-start justify-between gap-6">
               <div className="max-w-2xl">
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
@@ -212,7 +212,7 @@ export default function BookingModal({
                   Let’s figure out what system fits your business.
                 </h2>
 
-                <p className="mt-3 text-sm md:text-base text-neutral-400 leading-relaxed">
+                <p className="mt-3 text-sm md:text-base leading-relaxed text-neutral-400">
                   Tell us what’s slowing things down. We’ll review your workflow,
                   identify the bottleneck, and recommend the best place to start.
                 </p>
@@ -259,8 +259,11 @@ export default function BookingModal({
           </div>
 
           {!submitted ? (
-            <form onSubmit={onSubmit}>
-              <div className="max-h-[62vh] space-y-5 overflow-auto p-8 md:p-10">
+            <form
+              onSubmit={onSubmit}
+              className="flex min-h-0 flex-1 flex-col"
+            >
+              <div className="max-h-[65vh] flex-1 overflow-y-auto px-6 py-6 md:px-8 md:py-6 space-y-4">
                 {/* Honeypot */}
                 <div className="hidden">
                   <label>
@@ -386,7 +389,8 @@ export default function BookingModal({
                   </div>
 
                   <p className="mt-4 text-xs text-neutral-500">
-                    Pick the areas costing you the most time, speed, or visibility.
+                    Pick the areas costing you the most time, speed, or
+                    visibility.
                   </p>
                 </fieldset>
 
@@ -406,7 +410,7 @@ export default function BookingModal({
               </div>
 
               {/* Submit bar */}
-              <div className="sticky bottom-0 border-t border-neutral-800/60 bg-neutral-950/90 px-8 py-5 backdrop-blur-xl md:px-10">
+              <div className="sticky bottom-0 z-10 border-t border-neutral-800/60 bg-neutral-950/95 px-6 py-5 backdrop-blur-xl md:px-8">
                 <button
                   type="submit"
                   disabled={submitting}
@@ -424,7 +428,8 @@ export default function BookingModal({
                 </button>
 
                 <p className="mt-3 text-center text-xs text-neutral-500">
-                  We’ll review fit, identify the bottleneck, and reply within 24 hours.
+                  We’ll review fit, identify the bottleneck, and reply within 24
+                  hours.
                 </p>
               </div>
             </form>
