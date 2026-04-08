@@ -42,7 +42,7 @@ export default function MedSpaSystems() {
             className="pointer-events-none absolute inset-0"
           >
             <img
-              src="/system-core.png"
+              src="/system-core.PNG"
               alt=""
               className="h-full w-full object-cover opacity-15"
             />

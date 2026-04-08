@@ -1,25 +1,26 @@
+// src/components/WhoThisIsFor.tsx
 import { CheckCircle2, XCircle } from "lucide-react";
 
 const goodFit = [
   {
     title: "Service businesses with real lead flow",
     description:
-      "You already get inquiries, calls, bookings, or form submissions — but your systems are messy or manual.",
+      "You already get calls, inquiries, bookings, or form submissions — but your systems are still manual or fragmented.",
   },
   {
     title: "Teams losing time to repetitive work",
     description:
-      "Your staff is stuck doing confirmations, follow-ups, reminders, routing, and admin work by hand.",
+      "Your staff is spending too much time on follow-ups, reminders, routing, and admin work that should be automated.",
   },
   {
     title: "Operators who need cleaner execution",
     description:
-      "You want a business that responds faster, drops fewer leads, and runs with less chaos.",
+      "You want a business that responds faster, drops fewer leads, and runs with more clarity.",
   },
   {
     title: "Businesses ready to invest in real systems",
     description:
-      "You’re looking for durable infrastructure, not a cheap patch or a one-week hack job.",
+      "You’re looking for durable infrastructure that improves operations — not a cheap patch or short-term workaround.",
   },
 ];
 
@@ -30,14 +31,14 @@ const notFit = [
       "If price is the only priority, there are better fits than Apex.",
   },
   {
-    title: "Teams that do not want to change anything",
+    title: "Teams that do not want to improve the workflow",
     description:
-      "Automation only works when the business is ready to improve the workflow behind it.",
+      "Automation works best when the business is ready to fix the process behind it.",
   },
   {
-    title: "Projects with no clear business use",
+    title: "Projects with no clear business outcome",
     description:
-      "We focus on systems that improve response time, operations, bookings, and revenue.",
+      "We focus on systems that improve response time, operations, visibility, and revenue.",
   },
 ];
 
@@ -46,7 +47,7 @@ export default function WhoThisIsFor() {
     <section className="relative overflow-hidden px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24 bg-neutral-950/30">
       <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
         <img
-          src="/signal-burst.PNG"
+          src="/infrastructure-grid.PNG"
           alt=""
           className="h-full w-full object-cover"
         />
@@ -129,8 +130,8 @@ export default function WhoThisIsFor() {
             </div>
 
             <p className="mt-8 text-sm font-light text-neutral-500">
-              We’re focused on systems that solve real operational bottlenecks,
-              not generic one-off projects.
+              We focus on systems that solve real operational bottlenecks, not
+              generic one-off projects.
             </p>
           </div>
         </div>

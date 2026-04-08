@@ -1,35 +1,45 @@
+// src/components/ProblemsWeFix.tsx
 import { AlertTriangle } from "lucide-react";
 
 const problems = [
   {
-    title: "Leads slipping through the cracks",
+    title: "Leads come in, but response is too slow",
     description:
-      "People message, call, or fill out forms — but no one follows up consistently.",
+      "Calls, messages, and form submissions are not handled fast enough, so opportunities get lost before your team replies.",
   },
   {
-    title: "Manual booking and scheduling",
+    title: "Too much manual follow-up",
     description:
-      "Your team spends too much time managing calendars, confirmations, and reminders.",
+      "Your team is stuck sending reminders, checking in with leads, and moving work forward by hand.",
   },
   {
-    title: "Slow responses to customers",
+    title: "Systems do not talk to each other",
     description:
-      "Potential clients wait too long for answers and end up going somewhere else.",
+      "Information is scattered across forms, calendars, inboxes, spreadsheets, and tools that were never built to work together.",
   },
   {
-    title: "Disconnected tools and messy workflows",
+    title: "No clear visibility into operations",
     description:
-      "Information lives in too many places and your team wastes time coordinating.",
+      "You cannot easily see what is happening with leads, bookings, team activity, or where the workflow is breaking.",
   },
 ];
 
 export default function ProblemsWeFix() {
   return (
-    <section className="px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl">
+    <section className="relative overflow-hidden px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
+      {/* subtle background image */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
+        <img
+          src="/signal-burst.PNG"
+          alt=""
+          className="h-full w-full object-cover"
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
-            COMMON PROBLEMS
+            Common problems
           </p>
 
           <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
@@ -37,8 +47,8 @@ export default function ProblemsWeFix() {
           </h2>
 
           <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
-            Most businesses don’t need more tools. They need fewer manual steps
-            and cleaner systems.
+            Most businesses do not need more tools. They need better systems,
+            faster response, and cleaner operations.
           </p>
         </div>
 

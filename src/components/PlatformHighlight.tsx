@@ -17,16 +17,19 @@ export default function PlatformHighlight({
 }: PlatformHighlightProps) {
   return (
     <section className="relative overflow-hidden bg-neutral-950/30 px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
+      
+      {/* Background image */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
         <img
-          src="/automation-pipeline.png"
+          src="/automation-pipeline.PNG"
           alt=""
           className="h-full w-full object-cover"
         />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        {/* Left: content */}
+        
+        {/* Left */}
         <div>
           <p className="text-[11px] uppercase tracking-[0.22em] text-brand-400">
             Example system
@@ -68,20 +71,17 @@ export default function PlatformHighlight({
               onClick={onOpenBooking}
               className="group inline-flex items-center gap-2 rounded-md px-2 py-2 -ml-2 text-sm font-medium text-brand-400 transition-colors duration-500 hover:text-brand-500 focus-visible:ring-2 focus-visible:ring-brand-400"
             >
-              Talk through your workflow
-              <span className="transition-transform duration-500 group-hover:translate-x-0.5">
-                →
-              </span>
+              Talk through your workflow →
             </button>
           </div>
         </div>
 
-        {/* Right: real dashboard image */}
+        {/* Right */}
         <div className="relative">
           <div className="rounded-[28px] border border-neutral-800/60 bg-black/40 p-3 md:p-4 backdrop-blur-xl shadow-2xl shadow-black/60">
             <div className="overflow-hidden rounded-[22px] border border-white/5 bg-neutral-950">
               <img
-                src="/booking-dashboard.png"
+                src="/booking-dashboard.PNG"
                 alt="Dashboard example showing booking, appointments, and owner analytics"
                 className="h-full w-full object-cover"
                 loading="lazy"
@@ -89,7 +89,6 @@ export default function PlatformHighlight({
             </div>
           </div>
 
-          {/* subtle edge glow */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -inset-6 rounded-[34px] blur-2xl opacity-30"

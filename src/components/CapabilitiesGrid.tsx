@@ -34,7 +34,7 @@ export default function CapabilitiesGrid() {
       {/* subtle background image */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
         <img
-          src="/system-flow-orbs.png"
+          src="/system-flow-orbs.PNG"
           alt=""
           className="h-full w-full object-cover"
         />

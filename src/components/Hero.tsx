@@ -24,7 +24,7 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
       {/* Background image */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <img
-          src="/system-core.png"
+          src="/system-core.PNG"
           alt=""
           className="h-full w-full object-cover opacity-[0.18]"
         />
