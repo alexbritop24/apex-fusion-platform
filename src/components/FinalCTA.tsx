@@ -5,7 +5,17 @@ type FinalCTAProps = {
 export default function FinalCTA({ onOpenBooking }: FinalCTAProps) {
   return (
     <section className="relative overflow-hidden bg-black px-6 md:px-8 lg:px-16 py-20 md:py-24 lg:py-28">
-      {/* subtle radial glow */}
+      {/* subtle background image (your face) */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <img
+          src="/founder-bg.PNG"
+          alt=""
+          className="h-full w-full object-cover opacity-[0.08] md:opacity-[0.12]"
+        />
+        <div className="absolute inset-0 bg-black/85" />
+      </div>
+
+      {/* radial glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -15,18 +25,19 @@ export default function FinalCTA({ onOpenBooking }: FinalCTAProps) {
         }}
       />
 
-      <div className="relative mx-auto max-w-5xl text-center">
+      {/* content */}
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em] text-neutral-100">
-          Ready to fix your workflow?
+          Ready to build a system that actually works?
         </h2>
 
         <p className="mt-6 text-base sm:text-lg font-light text-neutral-400">
-          We’ll review your current process, find what’s slowing you down,
-          and design a system that removes the friction.
+          We’ll look at your workflow, find what’s slowing you down, and design a
+          system that removes the friction.
         </p>
 
         <p className="mt-4 text-sm font-light text-neutral-500">
-          Fewer no-shows. Faster replies. Less manual work.
+          Less manual work. Faster replies. Clearer operations.
         </p>
 
         <div className="mt-10">
@@ -43,7 +54,7 @@ export default function FinalCTA({ onOpenBooking }: FinalCTAProps) {
               "focus-visible:ring-2 focus-visible:ring-[#3F6E8F]",
             ].join(" ")}
           >
-            Book a strategy call
+            Request a Systems Assessment
           </button>
         </div>
       </div>

@@ -5,14 +5,12 @@ import Navigation from "../components/Navigation";
 import BookingModal from "../components/BookingModal";
 import Footer from "../components/Footer";
 import {
-  Code2,
+  PhoneCall,
+  CalendarCheck2,
   Workflow,
-  Database,
-  ShieldCheck,
+  Blocks,
   ArrowRight,
   Check,
-  LayoutTemplate,
-  Bot,
 } from "lucide-react";
 
 type ServiceCard = {
@@ -27,76 +25,52 @@ export default function Services() {
 
   const services: ServiceCard[] = [
     {
-      title: "Client Systems",
+      title: "AI Call & Response Systems",
       description:
-        "Systems that help you capture leads, book work, follow up faster, and keep customers moving.",
+        "AI systems that answer faster, qualify leads, and make sure opportunities do not get missed.",
       bullets: [
-        "Lead capture forms and intake flows",
-        "Booking, reminders, and confirmations",
-        "Payments, deposits, and status updates",
-        "Follow-ups that run automatically",
+        "AI receptionists for inbound calls",
+        "Missed-call text back workflows",
+        "Lead qualification and routing",
+        "AI-assisted first response systems",
+      ],
+      icon: <PhoneCall className="h-6 w-6" aria-hidden="true" />,
+    },
+    {
+      title: "Booking & Client Flow Systems",
+      description:
+        "Client-facing systems that keep booking, reminders, deposits, and follow-up running smoothly.",
+      bullets: [
+        "Booking flows and intake forms",
+        "Reminders, confirmations, and deposits",
+        "No-show reduction systems",
+        "CRM-connected appointment pipelines",
+      ],
+      icon: <CalendarCheck2 className="h-6 w-6" aria-hidden="true" />,
+    },
+    {
+      title: "Business Automation Systems",
+      description:
+        "Operational systems that remove repetitive work and keep your business moving without manual bottlenecks.",
+      bullets: [
+        "Lead capture and follow-up workflows",
+        "Proposal and onboarding automation",
+        "Approvals, routing, and handoffs",
+        "CRM and internal operations automation",
       ],
       icon: <Workflow className="h-6 w-6" aria-hidden="true" />,
     },
     {
-      title: "Operations Systems",
+      title: "Custom Software & Websites",
       description:
-        "Internal systems that reduce manual work and help your team stay organized day to day.",
+        "Websites, dashboards, portals, and internal tools built around the way your business actually works.",
       bullets: [
-        "Task routing and staff notifications",
-        "Approvals, handoffs, and internal steps",
-        "Simple dashboards and reporting",
-        "Cleaner day-to-day operations",
+        "Conversion-focused websites",
+        "Custom dashboards and admin panels",
+        "Client-facing portals",
+        "Tailored internal business tools",
       ],
-      icon: <Database className="h-6 w-6" aria-hidden="true" />,
-    },
-    {
-      title: "Custom Software",
-      description:
-        "Tools built around how your business actually works — not generic templates that force awkward workarounds.",
-      bullets: [
-        "Internal tools and admin panels",
-        "Client portals and custom workflows",
-        "Business-specific dashboards",
-        "Systems built to match your process",
-      ],
-      icon: <Code2 className="h-6 w-6" aria-hidden="true" />,
-    },
-    {
-      title: "AI + Smart Automation",
-      description:
-        "Practical AI tools that save time, speed up replies, and make your workflow more efficient.",
-      bullets: [
-        "AI chat and smart reply tools",
-        "Faster intake and lead handling",
-        "Automated task support",
-        "Business tools with AI built in",
-      ],
-      icon: <Bot className="h-6 w-6" aria-hidden="true" />,
-    },
-    {
-      title: "Reliable Setup",
-      description:
-        "The behind-the-scenes setup that keeps everything running clean, stable, and secure.",
-      bullets: [
-        "Integrations between your tools",
-        "Permissions and account access",
-        "Tracking, logging, and reliability",
-        "Setup that can grow with your business",
-      ],
-      icon: <ShieldCheck className="h-6 w-6" aria-hidden="true" />,
-    },
-    {
-      title: "Websites",
-      description:
-        "High-end websites built for clarity, trust, and conversion — with the right systems behind them.",
-      bullets: [
-        "Modern marketing websites",
-        "Clear messaging and structure",
-        "Fast, responsive, accessible pages",
-        "Connected forms, booking, and analytics",
-      ],
-      icon: <LayoutTemplate className="h-6 w-6" aria-hidden="true" />,
+      icon: <Blocks className="h-6 w-6" aria-hidden="true" />,
     },
   ];
 
@@ -104,7 +78,7 @@ export default function Services() {
     <div className="min-h-screen bg-black text-[#f5f5f5]">
       <SEO
         title="Services — Apex Fusion Studios"
-        description="We build client systems, operations systems, custom software, AI tools, reliable setup, and websites that remove manual work."
+        description="AI systems, automation, booking flows, custom software, and websites for modern service businesses."
         path="/services"
         imagePath="/og.png"
       />
@@ -119,37 +93,48 @@ export default function Services() {
       <main id="main" className="pt-16 md:pt-24">
         {/* HERO */}
         <section className="relative overflow-hidden px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
+          <div className="pointer-events-none absolute inset-0 z-0">
+            <img
+              src="/infrastructure-grid.PNG"
+              alt=""
+              className="h-full w-full object-cover opacity-[0.14]"
+            />
+            <div className="absolute inset-0 bg-black/80" />
+          </div>
+
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full blur-3xl"
-            style={{ background: "#3F6E8F", opacity: 0.03 }}
+            style={{ background: "#3F6E8F", opacity: 0.04 }}
           />
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -bottom-48 -right-48 h-[620px] w-[620px] rounded-full blur-3xl"
-            style={{ background: "#3F6E8F", opacity: 0.03 }}
+            style={{ background: "#3F6E8F", opacity: 0.04 }}
           />
 
-          <div className="relative mx-auto max-w-6xl">
+          <div className="relative z-10 mx-auto max-w-6xl">
             <p className="text-[11px] uppercase tracking-[0.22em] text-[#3F6E8F]">
               Services
             </p>
 
             <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight leading-[1.05] tracking-[-0.04em]">
-              We build systems that
+              AI systems, automation,
               <br />
-              remove manual work.
+              and software for businesses
+              <br className="hidden sm:block" />
+              that need better operations.
             </h1>
 
             <p className="mt-6 max-w-3xl text-base sm:text-lg md:text-xl font-light text-neutral-400 leading-relaxed">
-              That can mean booking, follow-ups, handoffs, internal tools, AI
-              support, or a full workflow rebuild — whatever is slowing your
-              business down today.
+              We build the systems behind modern service businesses — from AI
+              call handling and booking flows to internal automation, dashboards,
+              and custom software.
             </p>
 
             <p className="mt-4 max-w-2xl text-sm font-light text-neutral-500 leading-relaxed">
-              The goal is simple: less chaos, faster replies, fewer mistakes,
-              and smoother execution.
+              The goal is simple: less manual work, faster replies, fewer
+              mistakes, and cleaner execution.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -183,11 +168,11 @@ export default function Services() {
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[-0.04em]">
-                What we build
+                Four ways we help businesses run better
               </h2>
               <p className="mt-5 text-base sm:text-lg font-light text-neutral-400">
-                Different businesses need different systems. These are the main
-                ways we help.
+                These are the main categories of systems we design, build, and
+                integrate.
               </p>
             </div>
 
@@ -246,12 +231,12 @@ export default function Services() {
         <section className="px-6 md:px-8 lg:px-16 py-16 md:py-20 lg:py-24">
           <div className="mx-auto max-w-6xl rounded-3xl border border-neutral-800/60 bg-black/30 p-10 text-center backdrop-blur-xl md:p-14">
             <h2 className="text-3xl font-extralight tracking-[-0.04em] md:text-4xl lg:text-5xl">
-              Not sure what system you need yet?
+              Not sure what system fits your business yet?
             </h2>
 
             <p className="mx-auto mt-6 max-w-3xl text-base sm:text-lg font-light text-neutral-400">
-              We’ll look at your workflow, find what’s slowing things down, and
-              show you the fastest place to start.
+              We’ll look at your workflow, identify the bottleneck, and show you
+              the fastest place to start.
             </p>
 
             <div className="mt-10 flex justify-center">

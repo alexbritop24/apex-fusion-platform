@@ -21,19 +21,31 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
 
   return (
     <section className="relative min-h-screen overflow-hidden px-6 md:px-8 lg:px-16 py-28 md:py-32">
+      {/* Background image */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <img
+          src="/system-core.png"
+          alt=""
+          className="h-full w-full object-cover opacity-[0.18]"
+        />
+        <div className="absolute inset-0 bg-black/75" />
+      </div>
+
+      {/* Glow accents */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full blur-3xl"
-        style={{ background: "#3F6E8F", opacity: 0.03 }}
+        style={{ background: "#3F6E8F", opacity: 0.04 }}
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-48 -right-48 h-[620px] w-[620px] rounded-full blur-3xl"
-        style={{ background: "#3F6E8F", opacity: 0.03 }}
+        style={{ background: "#3F6E8F", opacity: 0.04 }}
       />
 
+      {/* Content */}
       <div
-        className="mx-auto max-w-6xl text-center"
+        className="relative z-10 mx-auto max-w-6xl text-center"
         style={{
           opacity: heroOpacity,
           transform: `translateY(${heroTranslate}px)`,
@@ -44,26 +56,23 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
         </p>
 
         <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-[-0.04em] leading-[1.02]">
-          Replace manual work
+          AI systems, automation,
           <br className="hidden sm:block" />
-          with systems that run your business.
+          and software that run your business.
         </h1>
 
         <p className="mx-auto mt-8 max-w-3xl text-base sm:text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
-          We build simple software and automation that handles{" "}
-          <span className="text-neutral-200">
-            leads, booking, follow-ups, payments, and handoffs
-          </span>{" "}
-          — so your team stops chasing and starts executing.
+          We build the infrastructure behind modern service businesses — from AI
+          call handling and booking flows to follow-ups, internal tools, and
+          business automation.
         </p>
 
         <p className="mx-auto mt-5 max-w-2xl text-sm text-neutral-500">
-          One clear build. Fewer mistakes. Faster replies. More money collected.
+          Less manual work. Faster replies. Clearer operations. More closed work.
         </p>
 
         <p className="mx-auto mt-4 max-w-3xl text-xs sm:text-sm text-neutral-600">
-          Built for growing service businesses — including med spas, home services,
-          and teams scaling past manual workflows.
+          AI systems • automation • booking • internal tools
         </p>
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
@@ -102,7 +111,7 @@ export default function Hero({ onPrimaryCTA, onSecondaryCTA }: HeroProps) {
         </div>
 
         <p className="mt-10 text-xs text-neutral-600 tracking-wide">
-          Operations systems • Automation • Booking + follow-ups
+          Built for service businesses that need better systems, not more chaos
         </p>
       </div>
     </section>
